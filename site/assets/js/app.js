@@ -7,7 +7,7 @@ const publications = [
     authors: "Pledger, L. J. T.",
     venue: "PhD dissertation, University of Canterbury",
     status: "Published",
-    citations: 0,
+    citations: null,
     apa: "Pledger, L. J. T. (2025). The effects of reducing design drift limits for structures [University of Canterbury]. https://doi.org/10.26021/16276",
     bibtex: "@phdthesis{pledger2025phd,\n  author={Pledger, Liam J. T.},\n  title={The effects of reducing design drift limits for structures},\n  school={University of Canterbury},\n  year={2025},\n  doi={10.26021/16276},\n  url={https://doi.org/10.26021/16276}\n}",
     links: [{ label: "DOI", url: "https://doi.org/10.26021/16276" }]
@@ -20,7 +20,7 @@ const publications = [
     authors: "Chacon-Valero, E.; Pujol, S.; Hube, M.; Pledger, L.; Kerby, C.",
     venue: "Earthquake Spectra, 41(5), 3805-3825",
     status: "Published",
-    citations: 1,
+    citations: null,
     apa: "Chacon-Valero, E., Pujol, S., Hube, M., Pledger, L., & Kerby, C. (2025). Effect of displacement cycles on the drift capacity of reinforced concrete structural walls. Earthquake Spectra, 41(5), 3805-3825. https://doi.org/10.1177/87552930251377733",
     bibtex: "@article{chaconvalero2025,\n  author={Chacon-Valero, Edgar and Pujol, Santiago and Hube, Matias and Pledger, Liam and Kerby, Charles},\n  title={Effect of displacement cycles on the drift capacity of reinforced concrete structural walls},\n  journal={Earthquake Spectra},\n  year={2025},\n  volume={41},\n  number={5},\n  pages={3805--3825},\n  doi={10.1177/87552930251377733},\n  url={https://doi.org/10.1177/87552930251377733}\n}",
     links: [{ label: "DOI", url: "https://doi.org/10.1177/87552930251377733" }]
@@ -108,7 +108,7 @@ const publications = [
     authors: "Pledger, L.; Pujol, S.; Calcagno, R.",
     venue: "ATC-15-17 Workshop, San Diego",
     status: "Conference proceeding",
-    citations: null,
+    citations: 0,
     apa: "Pledger, L., Pujol, S., & Calcagno, R. (2024, December). Designing to lower drift limits: The impacts on construction costs and non-structural components. ATC-15-17 Workshop, San Diego, United States.",
     bibtex: "@inproceedings{pledger2024atc,\n  author={Pledger, Liam and Pujol, Santiago and Calcagno, R},\n  title={Designing to lower drift limits: The impacts on construction costs and non-structural components},\n  booktitle={18th U.S.-Japan-New Zealand Workshop on the Improvement of Structural Engineering and Resilience (ATC-15-17)},\n  year={2024},\n  address={San Diego, USA}\n}",
     links: [
@@ -123,12 +123,10 @@ const publications = [
     authors: "Pledger, L.; Pujol, S.; Chandramohan, R.",
     venue: "18th World Conference on Earthquake Engineering, Milan",
     status: "Conference proceeding",
-    citations: null,
+    citations: 1,
     apa: "Pledger, L., Pujol, S., & Chandramohan, R. (2024, July). Reducing design drift limits. 18th World Conference on Earthquake Engineering, Milan, Italy.",
     bibtex: "@inproceedings{pledger2024wcee,\n  author={Pledger, Liam and Pujol, Santiago and Chandramohan, Reagan},\n  title={Reducing design drift limits},\n  booktitle={18th World Conference on Earthquake Engineering},\n  year={2024},\n  address={Milan, Italy}\n}",
-    links: [
-      { label: "ResearchGate publication", url: "https://www.researchgate.net/search/publication?q=Reducing%20design%20drift%20limits" }
-    ]
+    links: [{ label: "Download (ResearchGate)", url: "https://www.researchgate.net/publication/381968174_Quantifying_the_effect_of_reducing_seismic_drift_limits_on_the_performance_of_RC_frame_structures" }]
   },
   {
     id: "pledger2023nzsee",
@@ -138,7 +136,7 @@ const publications = [
     authors: "Pledger, L.; Pujol, S.; Chandramohan, R.",
     venue: "NZSEE Annual Conference",
     status: "Conference proceeding",
-    citations: null,
+    citations: 9,
     apa: "Pledger, L., Pujol, S., & Chandramohan, R. (2023, April). Investigating the effect of stiffness on the seismic performance of RC structures. NZSEE Annual Conference, Auckland, New Zealand.",
     bibtex: "@inproceedings{pledger2023nzsee,\n  author={Pledger, Liam and Pujol, Santiago and Chandramohan, Reagan},\n  title={Investigating the effect of stiffness on the seismic performance of RC structures},\n  booktitle={NZSEE Annual Conference},\n  year={2023},\n  address={Auckland, New Zealand},\n  url={http://13.237.132.70/handle/nzsee/2570}\n}",
     links: [{ label: "Proceedings", url: "http://13.237.132.70/handle/nzsee/2570" }]

@@ -136,35 +136,27 @@ i {
 
 .side-nav {
   margin-top: 1rem;
-}
-
-.side-nav details {
-  border: 1px solid #345161;
-  border-radius: 0.75rem;
-  margin-bottom: 0.55rem;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 0.35rem 0.5rem;
-}
-
-.side-nav summary {
-  cursor: pointer;
-  color: #f2f7fb;
-  font-size: 1rem;
+  display: grid;
+  gap: 0.5rem;
 }
 
 .side-nav a {
   display: block;
   color: #c7dde8;
   text-decoration: none;
-  padding: 0.28rem 0.2rem;
+  padding: 0.42rem 0.55rem;
+  border: 1px solid #345161;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
   font-weight: 600;
-  border-left: 2px solid transparent;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
 
 .side-nav a:hover,
 .side-nav a.active {
   color: #ecf8fe;
-  border-left-color: #8ec8d3;
+  border-color: #8ec8d3;
+  background: rgba(142, 200, 211, 0.14);
 }
 
 .sidebar-foot {
