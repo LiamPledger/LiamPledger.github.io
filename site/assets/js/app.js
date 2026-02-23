@@ -201,7 +201,6 @@ function renderPublications(filter = "all") {
 
   container.innerHTML = visible
     .map((p) => {
-      const citationText = Number.isFinite(p.citations) ? String(p.citations) : "n/a";
       const links = p.links
         .map((l) => `<a href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`)
         .join("");
@@ -209,7 +208,7 @@ function renderPublications(filter = "all") {
       return `
         <article class="pub-item">
           <h3>${p.title}</h3>
-          <p class="pub-meta">${p.authors} | ${p.venue} | ${p.year} | ${p.status} | Citations: ${citationText}</p>
+          <p class="pub-meta">${p.authors} | ${p.venue} | ${p.year} | ${p.status}</p>
           <p class="pub-apa"><strong>APA:</strong> ${p.apa}</p>
           <div class="pub-links">
             ${links}
@@ -254,7 +253,7 @@ function renderLastUpdated() {
   if (!nodes.length) return;
 
   const source = document.lastModified ? new Date(document.lastModified) : new Date();
-  const text = `Last updated: ${source.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}`;
+  const text = `Last updated: ${source.getFullYear()}`;
   nodes.forEach((node) => {
     node.textContent = text;
   });

@@ -195,7 +195,7 @@ i {
 }
 
 .panel {
-  background: var(--panel);
+  background: #fbf9f4;
   border: 1px solid var(--line);
   border-radius: 1rem;
   padding: 1rem;
@@ -205,7 +205,7 @@ i {
 .hero {
   background:
     radial-gradient(900px 300px at 95% -10%, #d8ecef 0%, #fbf9f4 65%),
-    #fff;
+    #fbf9f4;
 }
 
 .eyebrow {
@@ -225,6 +225,10 @@ i {
   margin: 0.35rem 0;
   color: var(--muted);
   line-height: 1.45;
+}
+
+.hero p {
+  color: #1f3746;
 }
 
 .stats {
@@ -251,6 +255,29 @@ i {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 0.65rem;
+}
+
+.explore h2 {
+  text-align: center;
+}
+
+.explore .card-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.explore .card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.explore .card h3 a:hover {
+  text-decoration: underline;
+}
+
+.explore .card:last-child {
+  grid-column: 1 / -1;
+  max-width: calc(50% - 0.325rem);
+  justify-self: center;
 }
 
 .card {
@@ -464,5 +491,15 @@ i {
     margin-left: 0;
     max-width: none;
     padding: 3rem 0.9rem 0.9rem;
+  }
+
+  .explore .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .explore .card:last-child {
+    grid-column: auto;
+    max-width: none;
+    justify-self: stretch;
   }
 }
