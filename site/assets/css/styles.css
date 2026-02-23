@@ -121,16 +121,33 @@ i {
 
 .sidebar-head p {
   margin: 0.45rem 0;
-  color: #bdd2df;
+  color: #ffffff;
+}
+
+.sidebar-contact {
+  margin: 0.25rem 0 0.6rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.sidebar-contact a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.94rem;
+}
+
+.sidebar-contact a:hover {
+  text-decoration: underline;
 }
 
 .cv-link {
   display: inline-block;
-  color: #d4f2f8;
+  color: #ffffff;
   font-weight: 700;
   text-decoration: none;
   padding: 0.35rem 0.6rem;
-  border: 1px solid #467084;
+  border: 1px solid #89b3c6;
   border-radius: 999px;
 }
 
@@ -142,12 +159,12 @@ i {
 
 .side-nav a {
   display: block;
-  color: #c7dde8;
+  color: #ffffff;
   text-decoration: none;
   padding: 0.42rem 0.55rem;
-  border: 1px solid #345161;
+  border: 1px solid #547587;
   border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.06);
   font-weight: 600;
   transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
@@ -157,20 +174,6 @@ i {
   color: #ecf8fe;
   border-color: #8ec8d3;
   background: rgba(142, 200, 211, 0.14);
-}
-
-.sidebar-foot {
-  margin-top: 1rem;
-  border-top: 1px solid #355463;
-  padding-top: 0.7rem;
-}
-
-.sidebar-foot a {
-  display: block;
-  color: #c7dde8;
-  text-decoration: none;
-  margin-bottom: 0.25rem;
-  font-size: 0.95rem;
 }
 
 .content {

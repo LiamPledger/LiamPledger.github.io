@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="RC wall drift capacity model by Liam Pledger.">
-  <title>Liam Pledger | RC Wall Model</title>
+  <meta name="description" content="Wall drift capacity model by Liam Pledger.">
+  <title>Liam Pledger | Wall Model</title>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body data-page="model-wall">
@@ -14,36 +14,51 @@
     <div class="sidebar-head">
       <h1>Liam Pledger</h1>
       <p>Postdoctoral Researcher<br>ETH Zurich</p>
+      <div class="sidebar-contact">
+        <a href="mailto:liam.pledger@ibk.baug.ethz.ch">liam.pledger@ibk.baug.ethz.ch</a>
+        <a href="https://orcid.org/0009-0006-5749-2167" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://github.com/LiamPledger" target="_blank" rel="noopener">GitHub</a>
+      </div>
       <a class="cv-link" href="assets/docs/CV_Liam_Pledger.pdf" target="_blank" rel="noopener">Download CV</a>
     </div>
 
     <nav class="side-nav">
       <a data-nav="overview" href="index.html">About</a>
       <a data-nav="publications" href="publications.html">Publications and Citations</a>
-      <a data-nav="model-column" href="model-column.html">RC Column Drift Capacity Model</a>
-      <a data-nav="model-wall" href="model-wall.html">RC Wall Drift Capacity Model</a>
-      <a data-nav="resources" href="resources.html">Resources and Supplementary Material</a>
+      <a data-nav="model-column" href="model-column.html">Column Drift Capacity Model</a>
+      <a data-nav="model-wall" href="model-wall.html">Wall Drift Capacity Model</a>
+      <a data-nav="resources" href="resources.html">Additional Resources</a>
     </nav>
-
-    <div class="sidebar-foot">
-      <a href="mailto:liam.pledger@ibk.baug.ethz.ch">liam.pledger@ibk.baug.ethz.ch</a>
-      <a href="https://github.com/LiamPledger" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://orcid.org/0009-0006-5749-2167" target="_blank" rel="noopener">ORCID</a>
-    </div>
   </aside>
 
   <main class="content">
     <section class="panel hero">
       <p class="eyebrow">ML Model</p>
-      <h2>RC Wall Drift Capacity Model</h2>
+      <h2>Wall Drift Capacity Model</h2>
       <p>
-        Parameter ranges match your Colab notebook interface.
+        Open-source implementation of the wall drift-capacity model, consistent with the Jupyter notebook workflow
+        and parameter bounds used in the original study.
+      </p>
+      <p>
+        Links:
+        <a href="assets/models/RC_Wall_Drift_Capacity_Calculator.ipynb">Jupyter notebook</a> |
+        <a href="https://bulletin.nzsee.org.nz/index.php/bnzsee" target="_blank" rel="noopener">Related manuscript page</a> |
+        <a href="https://github.com/LiamPledger/Estimating-the-dynamic-properties-of-Wall-frame-structures" target="_blank" rel="noopener">Open-source repository</a>
       </p>
     </section>
 
     <section class="panel">
       <div id="wall-model-form" class="model-form"></div>
       <div id="wall-model-result" class="result">Adjust parameters to generate a prediction.</div>
+    </section>
+
+    <section class="panel">
+      <h3>Citation</h3>
+      <p>Please cite the related manuscript when using this model:</p>
+      <p>
+        Pledger, L., Pujol, S., & Chandramohan, R. (2025). <em>Estimating the dynamic properties of wall-frame
+        structures</em> [Manuscript under review]. Bulletin of the NZ Society for Earthquake Engineering.
+      </p>
     </section>
   </main>
 

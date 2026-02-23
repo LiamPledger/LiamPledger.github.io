@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="RC column drift capacity model by Liam Pledger.">
-  <title>Liam Pledger | RC Column Model</title>
+  <meta name="description" content="Column drift capacity model by Liam Pledger.">
+  <title>Liam Pledger | Column Model</title>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body data-page="model-column">
@@ -14,36 +14,51 @@
     <div class="sidebar-head">
       <h1>Liam Pledger</h1>
       <p>Postdoctoral Researcher<br>ETH Zurich</p>
+      <div class="sidebar-contact">
+        <a href="mailto:liam.pledger@ibk.baug.ethz.ch">liam.pledger@ibk.baug.ethz.ch</a>
+        <a href="https://orcid.org/0009-0006-5749-2167" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://github.com/LiamPledger" target="_blank" rel="noopener">GitHub</a>
+      </div>
       <a class="cv-link" href="assets/docs/CV_Liam_Pledger.pdf" target="_blank" rel="noopener">Download CV</a>
     </div>
 
     <nav class="side-nav">
       <a data-nav="overview" href="index.html">About</a>
       <a data-nav="publications" href="publications.html">Publications and Citations</a>
-      <a data-nav="model-column" href="model-column.html">RC Column Drift Capacity Model</a>
-      <a data-nav="model-wall" href="model-wall.html">RC Wall Drift Capacity Model</a>
-      <a data-nav="resources" href="resources.html">Resources and Supplementary Material</a>
+      <a data-nav="model-column" href="model-column.html">Column Drift Capacity Model</a>
+      <a data-nav="model-wall" href="model-wall.html">Wall Drift Capacity Model</a>
+      <a data-nav="resources" href="resources.html">Additional Resources</a>
     </nav>
-
-    <div class="sidebar-foot">
-      <a href="mailto:liam.pledger@ibk.baug.ethz.ch">liam.pledger@ibk.baug.ethz.ch</a>
-      <a href="https://github.com/LiamPledger" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://orcid.org/0009-0006-5749-2167" target="_blank" rel="noopener">ORCID</a>
-    </div>
   </aside>
 
   <main class="content">
     <section class="panel hero">
       <p class="eyebrow">ML Model</p>
-      <h2>RC Column Drift Capacity Model</h2>
+      <h2>Column Drift Capacity Model</h2>
       <p>
-        Parameter ranges match your Colab notebook interface.
+        Open-source implementation of the column drift-capacity model, consistent with the Jupyter notebook workflow
+        and parameter bounds used in the original study.
+      </p>
+      <p>
+        Links:
+        <a href="assets/models/RC_Column_Drift_Capacity_Calculator.ipynb">Jupyter notebook</a> |
+        <a href="https://doi.org/10.14359/51749374" target="_blank" rel="noopener">ACI journal paper</a> |
+        <a href="https://github.com/LiamPledger/Drift-Capacity-of-RC-Columns" target="_blank" rel="noopener">Open-source repository</a>
       </p>
     </section>
 
     <section class="panel">
       <div id="column-model-form" class="model-form"></div>
       <div id="column-model-result" class="result">Adjust parameters to generate a prediction.</div>
+    </section>
+
+    <section class="panel">
+      <h3>Citation</h3>
+      <p>Please cite the ACI journal paper when using this model:</p>
+      <p>
+        Pledger, L., Pujol, S., & Chandramohan, R. (2026). <em>Estimating Drift Capacity of Reinforced Concrete
+        Columns Using Machine Learning</em>. ACI Structural Journal. https://doi.org/10.14359/51749374
+      </p>
     </section>
   </main>
 
