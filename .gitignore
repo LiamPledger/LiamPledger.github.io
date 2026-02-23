@@ -24,4 +24,5 @@ Thumbs.db
 # Local extracted repos and archives (kept outside published site)
 /drift_repo/
 /repo_*/
+/wall-drift-capacity-model-repo/
 /*.zip

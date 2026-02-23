@@ -249,17 +249,6 @@ function bindFilters() {
   });
 }
 
-function renderLastUpdated() {
-  const nodes = document.querySelectorAll("[data-last-updated]");
-  if (!nodes.length) return;
-
-  const source = document.lastModified ? new Date(document.lastModified) : new Date();
-  const text = `Last updated: ${source.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}`;
-  nodes.forEach((node) => {
-    node.textContent = text;
-  });
-}
-
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
@@ -372,16 +361,16 @@ function setupColumnModel() {
   createModelForm(
       "column-model-form",
       [
-      { id: "a", label: "<i>a</i> (mm) - Shear span", value: 1000, min: 200, max: 2000, step: 50 },
-      { id: "d", label: "<i>d</i> (mm) - Column section depth", value: 500, min: 100, max: 1000, step: 10 },
-      { id: "s", label: "<i>s</i> (mm) - Transverse reinforcement spacing", value: 100, min: 50, max: 500, step: 10 },
-      { id: "fc", label: "<i>f</i>'<sub>c</sub> (MPa) - Concrete compressive strength", value: 30, min: 20, max: 90, step: 1 },
-      { id: "fyl", label: "<i>f</i><sub>yl</sub> (MPa) - Longitudinal steel yield strength", value: 500, min: 250, max: 550, step: 10 },
-      { id: "fyt", label: "<i>f</i><sub>yt</sub> (MPa) - Transverse steel yield strength", value: 500, min: 250, max: 1000, step: 10 },
-      { id: "rhol", label: "&rho;<sub>l</sub> (%) - Longitudinal reinforcement ratio", value: 2.0, min: 0.0, max: 5.0, step: 0.1 },
-      { id: "rhot", label: "&rho;<sub>t</sub> (%) - Transverse reinforcement ratio", value: 0.4, min: 0.0, max: 2.0, step: 0.05 },
-      { id: "v", label: "<i>P</i> / (<i>A</i><sub>g</sub><i>f</i>'<sub>c</sub>) - Axial load ratio", value: 0.2, min: 0.0, max: 0.75, step: 0.05 },
-      { id: "lbd", label: "<i>l</i><sub>bd</sub> (mm) - Longitudinal bar diameter", value: 25, min: 5, max: 40, step: 1 }
+      { id: "a", label: "<i>a</i> (mm)", value: 1000, min: 200, max: 2000, step: 50 },
+      { id: "d", label: "<i>d</i> (mm)", value: 500, min: 100, max: 1000, step: 10 },
+      { id: "s", label: "<i>s</i> (mm)", value: 100, min: 50, max: 500, step: 10 },
+      { id: "fc", label: "<i>f</i>'<sub>c</sub> (MPa)", value: 30, min: 20, max: 90, step: 1 },
+      { id: "fyl", label: "<i>f</i><sub>yl</sub> (MPa)", value: 500, min: 250, max: 550, step: 10 },
+      { id: "fyt", label: "<i>f</i><sub>yt</sub> (MPa)", value: 500, min: 250, max: 1000, step: 10 },
+      { id: "rhol", label: "&rho;<sub>l</sub> (%)", value: 2.0, min: 0.0, max: 5.0, step: 0.1 },
+      { id: "rhot", label: "&rho;<sub>t</sub> (%)", value: 0.4, min: 0.0, max: 2.0, step: 0.05 },
+      { id: "v", label: "<i>P</i> / (<i>A</i><sub>g</sub><i>f</i>'<sub>c</sub>)", value: 0.2, min: 0.0, max: 0.75, step: 0.05 },
+      { id: "lbd", label: "<i>l</i><sub>bd</sub> (mm)", value: 25, min: 5, max: 40, step: 1 }
       ],
     (state) => {
       const query = {
@@ -415,15 +404,15 @@ function setupWallModel() {
   createModelForm(
     "wall-model-form",
     [
-      { id: "fc", label: "<i>f</i>'<sub>c</sub> (MPa) - Concrete compressive strength", value: 30, min: 20, max: 100, step: 1 },
-      { id: "Lw", label: "<i>l</i><sub>w</sub> (mm) - Wall length", value: 3000, min: 1000, max: 12000, step: 100 },
-      { id: "t", label: "<i>t</i> (mm) - Wall thickness", value: 300, min: 50, max: 1000, step: 10 },
-      { id: "h", label: "<i>h</i> (mm) - Wall height", value: 3000, min: 1000, max: 50000, step: 100 },
-      { id: "s", label: "<i>s</i> (mm) - Boundary stirrup spacing", value: 100, min: 10, max: 300, step: 10 },
-      { id: "rholb", label: "&rho;<sub>lb</sub> (%) - Longitudinal boundary reinforcement ratio", value: 2.0, min: 0.0, max: 5.0, step: 0.1 },
-      { id: "rhotb", label: "&rho;<sub>tb</sub> (%) - Transverse boundary reinforcement ratio", value: 0.4, min: 0.0, max: 5.0, step: 0.1 },
-      { id: "Fy", label: "<i>f</i><sub>y</sub> (MPa) - Reinforcement yield strength", value: 500, min: 300, max: 1000, step: 10 },
-      { id: "ALR", label: "<i>P</i> / (<i>A</i><sub>g</sub><i>f</i>'<sub>c</sub>) - Axial load ratio", value: 0.2, min: 0.0, max: 0.4, step: 0.01 }
+      { id: "fc", label: "<i>f</i>'<sub>c</sub> (MPa)", value: 30, min: 20, max: 100, step: 1 },
+      { id: "Lw", label: "<i>l</i><sub>w</sub> (mm)", value: 3000, min: 1000, max: 12000, step: 100 },
+      { id: "t", label: "<i>t</i> (mm)", value: 300, min: 50, max: 1000, step: 10 },
+      { id: "h", label: "<i>h</i> (mm)", value: 3000, min: 1000, max: 50000, step: 100 },
+      { id: "s", label: "<i>s</i> (mm)", value: 100, min: 10, max: 300, step: 10 },
+      { id: "rholb", label: "&rho;<sub>lb</sub> (%)", value: 2.0, min: 0.0, max: 5.0, step: 0.1 },
+      { id: "rhotb", label: "&rho;<sub>tb</sub> (%)", value: 0.4, min: 0.0, max: 5.0, step: 0.1 },
+      { id: "Fy", label: "<i>f</i><sub>y</sub> (MPa)", value: 500, min: 300, max: 1000, step: 10 },
+      { id: "ALR", label: "<i>P</i> / (<i>A</i><sub>g</sub><i>f</i>'<sub>c</sub>)", value: 0.2, min: 0.0, max: 0.4, step: 0.01 }
     ],
     (state) => {
       const query = {
@@ -451,4 +440,3 @@ bindPublicationActions();
 bindFilters();
 setupColumnModel();
 setupWallModel();
-renderLastUpdated();
