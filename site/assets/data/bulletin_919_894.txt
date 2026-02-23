@@ -1,0 +1,1383 @@
+                                                                                                                                           185
+
+
+            A STUDY OF THE INELASTIC SEISMIC RESPONSE OF REINFORCED CONCRETE
+                                    COUPLED FRAME-SHEAR WALL STRUCTURES
+                                          W.J. Goodsir*, T. Paulay** and A.J. Carr**
+
+               SYNOPSIS:
+
+                     Three 12 storey frame-shear wall buildings with varying wall size were
+               designed according to capacity design principles.    Their response to the
+               El Centro NS 1940 and Pacoima Dam S15°W 1970 accelerograms was investigated
+               using a 2-dimensional nonlinear dynamic analysis program.    Particularly
+               significant observations were the high levels of wall shear forces and
+               generally low levels of column bending moment encountered.   Widespread
+               beam flexural yielding involving moderate levels of inelastic deformations
+               and interstorey drifts controlled by the walls indicate the potentially
+               desirable inelastic performance of these hybrid structures.    Design
+               schemes are proposed whereby improved estimation of maximum inelastic
+               actions can be made using the traditional elastic analysis for equivalent
+               lateral static loading on the structure.
+
+ 1.       INTRODUCTION                                                         the effects of high mode participation In
+                                                                               response, often negligible for low buildings,
+       Coupled frame-shear wall structural                                     could be examined.       Each structure con-
+ systems combine the advantages of their                                       sisted of 7 two-bay frames, 8 one-bay
+ constituent elements.   Gravity load is                                       frames and a pair of vertically tapering
+ most efficiently taken by frames, while                                       cantilever shear w a l l s , the size of which
+ shear walls provide excellent lateral load                                    (£w = 4, 6, 8 m ) provided variation in
+ resistance, stability and the deflection                                      frame wall stiffness ratio.        The frame
+ control necessary in a seismically active                                     components of the buildings, in part
+ region such as New Zealand.   Despite the                                     adapted from structures studied by Jury
+ attractiveness and indeed the existence                                       (4), was held constant.        Overall centreline
+ of many such structures in this country,                                      plan dimensions are 18.4 x 73.6 m, being
+ comparatively little research effort has                                      2 bays by 8 bays at a bay length of 9.2 m.
+ been directed to them, and for design                                         The structures had a constant floor height
+ purposes, the New Zealand Concrete Design                                     of 3.65 m for a total height of 43.8 m,
+ Code (1) draws the designer's attention                                       with 16 0 mm thick floor slabs throughout.
+ to the need for "special studies" of                                          Details of member sizes are given in
+ these "ductile hybrid structures".                                            Figure 1.
+ Existing research deals almost exclusively
+ with elastic load distributions despite                                       2.2       Modelling Assumptions
+ the obvious importance of response in the
+ inelastic regime.                                                             (a)        For the purposes of computer
+                                                                                          assisted analyses, the 3 dimensional
+        This study was initiated with the                                                 structure was modelled in 2
+ intention of ultimately formulating a series                                             dimensions by
+ of semi-empirical rules, whereby the results
+ of the requisite static elastic analyses,                                                  (i) the additive lumping of
+ that result in "code" actions, could be                                                        stiffness parameters of similar
+ modified and subsequently designed for,                                                        lateral load resisting elements
+ resulting in a structure that should                                                           (7 type 1 frames, 2 walls e t c ) ,
+ exhibit good inelastic behaviour in the                                                        and
+ event of a major earthquake.      Such a
+ scheme should ideally permit a smooth                                                    (ii) the connection in series of
+ transition between existing design rules                                                      the 3 types of load resisting
+ for. space frames (1) and those for shear                                                     element via the slaving of
+ wall structures ( 2 ) , as a function of                                                      horizontal degrees of freedom
+ the relative proportions of frame and shear                                                   of adjacent nodes.
+ wall stiffness.
+                                                                                          Such modelling (Figure 2) allows
+ 2.       GENERAL DESCRIPTION OF THE BUILDING                                             the transfer of horizontal forces
+          AND MODELLING ASSUMPTIONS                                                       only, with total vertical load on
+                                                                                          each lumped element remaining
+ 2.1      General Description of the Buildings                                            constant and implicitly assumes
+                                                                                          the floor slabs to be infinitely
+       A series of 3 hypothetical 12 storey,                                              rigid diaphragms in their own
+ reinforced concrete structures based on                                                  planes.
+ those investigated by Carter (3) was
+ selected for study (Figure 1 ) . Although                                     (b)        Full fixity at foundation level
+ these structures are unusually regular,                                                  of both wall and column members
+ it is thought that sufficient realism has                                                was assumed.
+ been retained to make the investigation of
+ practical interest.   The structural height                                   (c)        Unidirectional earthquake excitation
+ of 12 storeys was chosen in the hope that                                                only, perpendicular to the long
+                                                                                          axis of the building, was considered
+ ^Graduate Student, Department of Civil
+                                                                                          with no allowance made for a skew
+  Engineering, University of Canterbury,
+                                                                                          earthquake or torsional effects.
+  Christchurch.
+**Department of Civil Engineering, University
+                                                                               (d)        The torsional resistance of beams
+  of Canterbury, Christchurch.
+B U L L E T I N OF THE NEW Z E A L A N D N A T I O N A L SOCIETY FOR E A R T H Q U A K E E N G I N E E R I N G , V O L . 16, NO. 3, SEPTEMBER 1983
+186
+
+
+          FIGURES
+
+
+
+
+                                                                                                                                          3
+                                   8 at 9 2m = 73 6m
+
+                         K—nri—r
+                                                                                                                                    550
+
+
+
+
+                                                                                          Wall Type             4m     6m          8m
+
+                                                                                               U                400    600         800
+
+                       Type 1      Type 2                     PLAN                             b                0-45   0-40        035
+
+      (size varies )   Frame        Frame                                                      b   w
+
+
+
+
+                                                                                          Level          1-3    0-45   0-40        0 35
+
+                                                                                                        4-6     0-40   035         030
+
+                                                                                                        7-9     0 35   030         0 25
+                   (a) General plan of structure
+                                                                                                       10 -12   030    0-25        0-20
+
+                                                                                           Note: Alt dimensions a r e in metres.
+
+
+
+
+                                                                                         (b) Wall dimension variation
+
+
+
+
+                                              9-2m
+                                                       i
+                                                       i   9 2m
+
+                                                                                                         12
+                                                                     -600*550-
+                                                                     -700x700
+                                                                                                         10
+
+
+                                                                                                         8
+
+                                                                     -750*400 —
+                                                                                                         6
+                                                                      throughout
+
+
+                                                                                                         4
+                                                                     -600x600--
+                                                                     -800x800                            2
+
+
+                                                                                                         Gr.
+
+                                               ELEVATION                           ELEVATION
+
+
+
+
+                                (c) Type 1 frame                                    (d) Type 2 frame
+
+                                Fig. 1 - Dimension Details of Building Studied
+                                                                                             187
+
+      framing into the plane of type            occur only at sections detailed for this
+      1 or 2 frames, and the load resistance    purpose.
+      of the exterior columns in the plane
+      of the shear walls were both ignored            Thus a desirable hierarchy of hinge
+      in the analyses.                          formation was decided upon, which, for
+                                                the multistorey buildings under consider-
+(e)   Assumed moduli of elasticity for          ation involves beam hinging with a high
+      steel and concrete were 200 and 25 GPa    degree of protection afforded the columns.
+      respectively.   Allowance was made        Base level yielding in columns and walls
+      for both steel and flexural deform-       is expected, as this is necessary for
+      ations in structural members and          the full development of a collapse
+      these deformations were assumed not       mechanism.    Detailed design of only
+      to occur in beam column joints,           flexural reinforcement was carried out
+      these latter items being modelled         with brief checks made as to the
+      by providing members with rigid           practicability of supplying other
+      end blocks.                               reinforcement, i.e. for shear resistance,
+                                                confining of the compressed concrete etc.
+(f)   Non structural elements, present in       The floor slab was not subject to detailed
+      a real building, were assumed not to      design.    Assumed material properties
+      modify the structural responses..         were:   concrete compression strength
+                                                f^ = 25 MPa and steel yield strength
+3.    DESIGN OF STRUCTURES                      f  = 275 HPa for beams and w a l l s , and
+                                                330 MPa for columns.
+3.1   General
+                                                      Many aspects of frame-shear wall
+      The paramount consideration of any        behaviour can be deduced from a consider-
+proposed design scheme is that it must          ation of the way In which the deflected
+provide a building so designed with the         shapes of isolated frames and shear walls
+potential to exhibit good seismic               subject to the same lateral load, are
+performance.    However, to be practical        modified by coupling.       Figures 3(a)
+such a process must be relatively straight-     and (b) show the "shear" mode of deformation
+forward, rapid and computationally as simple    typically adopted by a laterally loaded
+as possible;   considerations which as yet      frame structure, and the essentially
+preclude the routine use of inelastic           "flexural" deformation of a shear wall
+analyses.    However, most organisations        under the same loading.       The coupling
+engaged in the design of multistorey            of these 2 structural forms leads to an
+structures do have routine access to            overall deflection profile as shown in
+static elastic analysis packages.               Figure 3 ( c ) , indicating that the w a l l ,
+                                                although controlling deformation at
+      In view of the factors stated above,      low levels, is restrained by the frame
+the research program reported herein            in the upper levels.
+was constructed as follows:
+                                                      In accordance with the requirements
+(a)   A series of structures were designed      of the Code of Practice for General
+      using the results of a static             Structural Design and Design Loadings
+      lateral load analysis, modified in a      for Buildings ( 6 ) , an elastic analysis
+      suitable manner.                          for the prescribed lateral static load
+(b)   The structures were subjected to          may be used for design by the "strength"
+      simulated seismic attack (via             method described in NZS 3101 ( 1 ) .   Such
+      computer based modelling) and extreme     analyses were made for each of the 3
+      member actions were recorded, and         structures under consideration using the
+(c)   Factors and procedures relating           elastic static analysis option of the
+      maximum observed dynamic actions to       computer program RUAUMOKO (8) (see also
+      code (static load) actions were           Section 4 . 1 ) .
+      derived, enabling an improved and
+      generalised design method to be           3.2    Loading
+      proposed.
+                                                        Dead weight calculations were based
+      In this manner a scheme may be            on an assumed equivalent weight of
+developed whereby the designer may derive       23 k N / m for concrete structural m e m b e r s ,
+                                                        3
+
+
+
+design actions that are critical because        and a uniformly distributed dead load
+they are not directly associated with           of 0.5 kPa representing finishes,
+ductile energy dissipating mechanisms,          service ducting, partitions etc.       A
+simply by the appropriate factoring of          live load of 2.5 kPa was chosen, and
+the code (static load) distribution of the      reduced for design purposes according to
+corresponding actions.   Typical actions        tributary areas.     Static earthquake
+are shear forces in walls and columns           load was calculated in accordance with
+where flexural yielding (plastic hinges)        the provisions of Part 3: NZS 4203 (6) for
+are being developed in these components.        loading in the short direction of the
+                                                building only.     Seismic live load for
+           The proposed design philosophy for   the purpose of estimating equivalent
+frame-shear wall structures is by the           floor masses, was taken as L/3 (L being
+application of the previously postulated        the unreduced live load as above) and
+capacity design approach (5) .       The        was added to the dead load D.     The
+major feature of this approach is the 'a        seismic coefficient C-. = CISMR was
+p r i o r i selection and appropriate
+      1
+                                                calculated as follows:
+detailing of primary energy dissipating
+elements (plastic hinges) and the provision     C = 0.075, for a building of fundamental
+of other structural elements with                   period assumed greater than 1.2 sec,
+sufficient reserve strength "to ensure              in Seismic Zone A and founded on
+that significant inelastic deformations             rigid subsoils.   Subsequent checks
+188
+                                                                         -Rigid   Links —
+
+
+
+
+                                                                                                -Lumped
+                                                                                                 Wall
+
+
+
+                          7T77T.            jrrrr,         U/TTr V777!
+                                   Lumped     Frame    1                 Lumped    Frame    2
+
+
+
+                   Fig. 2 - Lumped Model for Computer Analysis
+
+
+
+
+                                                                                                  TTTP   fTrT7777V777
+                                                                                                         T
+
+
+
+
+                     FRAME                                 WALL                     COMBINED STRUCTURE
+
+      Fig. 3 - Typical Deflected Shapes of Frame, Wall and Coupled Frame-Wall
+               Structure
+
+
+        12
+
+
+        10
+                                         Shear resisted
+                                            by w a l l s
+
+
+
+
+                                                Total s h e a r
+
+
+
+
+               0   2-5   50        7-5    10 0 (MN)                                                50            100    150   (MN.m)
+                         SHEAR                                                                           MOMENT
+
+
+      Fig. 4 - Shear Force Distribution                                    Fig. 5 - Bending Moment Distribution
+               Under Code Lateral Load                                              Along Walls Under Code Lateral
+                                                                                    Load
+                                                                                                          189
+
+       confirmed the validity of the                       in the manner suggested in Ref. 1, using
+       period assumption for all structures                the standard tributary area approach for
+       (see Table 1 ) .                                    gravity load and the modified summation
+                                                           of beam shear forces at beam flexural
+The terms I and R were both assigned a                     overstrength due to earthquake effects.
+value of unity, as was the product S x M ,                 The necessary column reinforcement demand
+resulting in a net    value of 0.075.                      was found using interaction charts ( 7 ) .
+                                                           Supplied     values ranged from code
+3.3    Elastic Analysis             Code Actions           minimum    0.8% to a maximum of 2.20%.
+      Figure 4 shows the internal dis-                     3.6       Wall Design
+tribution of storey shear forces between
+walls and frames.      The well known                             The cantilever shear walls were
+phenomenon, whereby the wall shear acts                    designed according to the methods suggested
+in the same direction as the external load                 in Ref. ( 2 ) , and using conventional strain
+in the top few storeys, is evident.      The               compatibility methods with an assumed
+"code" wall shear force in the ratio                       extreme fibre compression strain of 0.003.
+(V , ,     / V . i_ n ,   ) code, defined                  Wall plastic hinge length £ w a s taken
+Js gAI'^§lr m j > '
+  w                   b a s e <
+                                  i s used as an           equal to l^.       The critica?  design
+index of relative wall stiffness, and
+has values 0.58, 0.75 and 0.83 for the 4,                  axial load was due to 0.9D.   The distri-
+6 and 8 m walled structures respectively.                  buted vertical web reinforcement was
+Wall bending moment distribution with                      supplied in a minimum area ratio of 0.3%.
+height exhibits trends predicted in                        Flexural bars in the walls were curtailed
+Section 3.1 and Figure 5 illustrates the                   with height as indicated in Figure 9.
+effect of changing wall size on wall                       Required reinforcement contents are
+moment patterns.                                           shown in Table 2.   Full base fixity of
+                                                           walls was assumed in the analyses, and no
+       Figure 6 shows the variation of beam                detailed check was made as to the
+shear forces with height.    This is                       feasibility of such restraint being
+informative when viewed in the context of                  provided by the foundations.
+laminar shear distributions commonly
+met in the analysis of coupled shear                                 DYNAMIC ANALYSES
+walls ( 2 ) .
+                                                           4.1       General
+3.4    Beam Design
+                                                                  The 2 dimensional inelastic time
+      The design of beams was carried out                  history program RUAUMOKO (8) developed in
+for load cases prescribed in NZS 4203 ( 6 ) ,              original form by Sharpe (9) and substant-
+using conventional frame design methods,                   ially modified by Carr (8) was used to
+with the load combination of D + 1.3 L + E             R
+                                                           investigate the response of the 3 frame-wall
+generally being the critical case.                         structures to simulated seismic attack.
+Use was made of redistribution of beam                     Input data (11), not presented in detail
+moments as permitted in NZS 3101 ( 1 ) , which             here, consisted essentially o f :
+often resulted in equalization of positive
+and negative moment demands at a given floor.              (a)       The geometry of the structure, as
+It was decided, in keeping with the                                  described in terms of 78 nodes.
+recommended practice for coupled shear
+walls ( 2 ) , to allow also up to 20%                      (b)       Member properties, consisting of
+vertical redistribution of beam moments                              both stiffness and flexural
+keeping the aggregated moment demand for                             strength data for each of the 108
+the 12 floors unaltered.      This allows                            members.   Stiffnesses were
+considerable repetition of beam reinforce-                           calculated in accordance with the
+ment layouts in a given structure.      This                         assumed state of cracking detailed
+is illustrated in Figure 7.      Reinforcement                       in Table 3.     For beams and w a l l s ,
+ratio demands (p) varied from 0.6 5% to                              yield data w a s simply a yield
+1.80% for the uniformly sized 750 x 400 beams,                       moment, based on the probable
+                                                                     member strength.     Column members
+3.5    Column Design                                                 had yield properties in the form of
+                                                                     a slightly simplified interaction
+        Columns were designed according to                           diagram.   A strain hardening
+the spirit, if not the letter, of the                                factor of 3% was selected for the
+Appendix to the commentary of Section 3 of                           walls, but elastie-perfectly plastic
+NZS 3101 ( 1 ) , with column design moments                          hysteresis for beams and columns
+calculated according to the formula M                                was assumed.
+    _ R    (d) wM -. _ 0. 3 h, V -,) .      col,
+                                                   r
+
+
+
+red ^m    r
+             o   code
+                              b col                        (c)       Lumped nodal weights (estimated at
+ (The terms are defined in the N o t a t i o n ) .
+                                                                     D + L/3) and rotational inertias
+In this study the most important variable
+                                                                     (10), used for the calculation of
+was deemed to be the column dynamic
+                                                                     inertia forces.
+magnification factor, a), which recognises
+the higher mode effects capable of
+                                                           (d)       One one-hundredth of a second was
+dramatically altering (5) first mode
+                                                                     used throughout the analyses ensuring
+ ("code") member actions in a frame.          In
+                                                                     stability of the numerical process.
+view of the control on deflections (and
+                                                                     A Rayleigh damping model was chosen
+hence high mode participation) expected
+                                                                     and after some initial problems
+to be provided by the w a l l s , values of
+                                                                     (11), a scheme assigning 5% of
+a) lower (OJ = 1.45) than those suggested for
+                                                                     critical damping to modes 1 and
+a pure space frame (1) (w = 1.8)were used,
+                                                                     10 was adopted.
+as illustrated in Figure 8.        Design axial
+loads P          and P     . were obtained
+         e ,max        e, m m                              (e)       The two earthquake records     selected
+190            12
+                                                                                  \
+
+                                                                                          \l
+               10
+                                                                                                                     Frame 2
+
+          ac
+                                                                                                      \ N
+          §    6
+                                                                                                      I
+                                                                                                            \
+
+
+
+                                                                                           M                   \
+
+
+                                                                                                                t
+               2                                   3@M (m)
+                                                         w
+                                                                                               ^.4
+
+
+               0
+                    0   002 004 006 008 0-10                          0     001 0 0 2 0 0 3 0 0 4
+                             Beam shear                                         Beam s h e a r
+                             Base        shear                                  B a s e shear
+
+      Fig. 6 - Beam Shear Force Distributions Under Code Lateral Load
+
+
+
+                                   12
+                                                                     - Moment supplied
+
+
+                                   10
+                                                              ft o
+
+                                    8       4m W A L L
+                             (/>                                                -Moment               demand
+                             C£
+                             O   /
+                             O   o
+                             _J
+                             Li-
+
+
+
+
+                                    4
+
+
+                                    2
+
+
+                                    0             200        400      600     (kN.m)
+
+                                                    Moment
+
+
+      Fig. 7 - Horizontally Redistributed Beam Moments (Type 1 Frame) and Supplied
+               Capacities Showing Vertical Moment Redistribution
+
+
+
+
+                                                                                                                          Design e n v e l o p e
+                                   I/!--— Assumed
+                             ^\/\        design
+                               j/j       values
+                                   I/I
+                                         R a n g e of
+                                         code ( N Z S 3101)                                                                             Moments from
+                                   i/\   values                                                                                          static load
+                                                                                                                                           analysis
+
+
+
+
+                                                                                      0          10       20        30   40    50     60    (kN.m)
+
+                                                                                                          Moment
+
+      Fig. 8 - Assumed Distribution of                                    Fig.        9    - Wall Bending Moment Demand
+               Column Dynamic Magnification                                                  and Supplied Capacity for
+               Factor (oo)                                                                   the 6 m Walled Structure
+                                                                                                           191
+
+        were the El Centro N-S 1940                           strength based on the recommended
+        and Pacoima Dam S15 W 1970 events.                    capacity design procedure for the
+        The former, a complex multiple                        cantilever shear walls (2) .
+        event quake, has become inseparably
+        linked with studies of structural             (c)(d) Maxima in shear strength demand
+        response and, as a result, is a                      encountered during the first 10.0
+        banchmark for comparison purposes                    sec. of the El Centro and Pacoima
+        despite its shortcomings.    The                     Dam records respectively.
+        Pacoima Dam record is one of the
+        most severe accelerograms in                  The inability of both (a) and . (b) to predict
+        existence and, as such, constitutes           the necessary wall shears strength in the
+        an upper bound to probable ground             upper storeys is evident. • Although El
+        motion in New Zealand.    Despite             Centro base shear demands are adequately
+        arguments as to the likelihood                met in this structure, those for Pacoima
+        of such an event, it is contended             Dam are not.   An unexpected observation in
+        that a structure that can survive             all analyses was that, even at ground floor
+        the Pacoima record without catastrophic       level, wall and frame shears acted often in
+        collapse demonstrates a wholly                opposite senses, so that walls resisted a
+        acceptable design, while inability            shear greater than the total applied
+        to survive does not rule out                  (external) force.   Observed shears under
+        acceptability of the design.     For          El Centro were on average about 40% less
+        reasons of economy in computation,            than those for Pacoima Dam, although on
+        the first 10 seconds only of each             occasions, the El Centro level of shear*did
+        record was used.                              exceed that of the Pacoima Dam record,
+                                                      (e.g. positive shear, levels 3 and 4) .
+4.2     Response of Frame - Shear Wall
+        Structure to Horizontal Excitations           4.2.3   Wall Moment
+
+       Although a great deal of information                  Envelopes of maximum (positive or
+was generated in each analysis, space                 negative)bending moment encountered during
+limitations permit the reproduction herein            the 10 seconds in w a l l , together with
+of only a small amount of typical material,           probable yield moments, are presented in
+specifically, information relevant to the             Figure 14.   While the Pacoima Dam moment
+4 m walled structure.    (A more detailed             envelope is nearly linear and closely matches
+exposition of the results of the dynamic              the design envelope ( 1 ) , that for El Centro i
+analyses may be found in Ref. 1 1 ) . The             more reminiscent of the moment diagram
+information shown regarding structural                resulting from the code static load.      The
+deformations and member actions are,                  observed yielding in the upper regions
+however, generally typical of the responses           of the wall was generally insignificant, as
+of the 6 and 8 m walled structures.                   witnessed by the recorded plastic rotations
+                                                      (see Section 4.2.7).
+4.2.1   Displacement   Response
+                                                      4.2.4   Column Moment
+       Figure 10 shows time histories of
+horizontal deflection of the 3rd, 6th,                       Figure 15 shows both envelopes of
+9th and 12th floors of the structure to               maximum recorded column moment and correspond
+the 2 excitations.    Part (a) indicates              ing probable yield strength in flexure,
+the sinusoidally oscillating response under           calculated using the axial load observed
+El Centro, with a period of about 1.9                 in the column at the same time as the maximum
+sec. and the development of a locked in               moment was recorded.   Under the El Centro
+plastic displacement.      The main feature           loading, columns clearly enjoy generally high
+of the response to Pacoima Dam is the                 levels of protection and although the extent
+extremely large deflection pulse at 3.2               of this protection is reduced during the
+seconds and subsequent relatively stable              Pacoima Dam excitation, it is still sig-
+oscillation of the building.      Envelopes           nificant.   This evident conservatism design
+of maximum horizontal deflection and                  was echoed in the analyses performed for the
+interstorey drift are presented in Figures            6 and 8 m walled structures.
+11 and 12.   The latter shows maximum
+drift indices of 0.0085 (El Centro)                   4.2.5   Column Shear
+and 0.0198 (Pacoima D a m ) .  When these are
+compared with the values of 0.0110 and                       Column shear forces under both excita-
+0.0233, obtained by Jury (4) for similar              tions were of similar orders, with no
+12 storey pure frames, the deflection control         definite pattern of larger shear induced by
+afforded by this relatively flexible shear            the stronger excitation, as seen in Figure
+wall becomes evident.                                 16.   Design level shears (calculated
+                                                      according to the rules of Appendix I NZS 3101
+4.2.2   Wall Shear                                    Part 2 (1) are also shown.   These adequately
+                                                      estimate observed shears except at the
+       For the purpose of comparison                  extreme top and bottom of the structure.
+Figure 13 shows 4 levels of shear strength
+at each floor of the 4 m walled structure,            4.2.6   Column Axial Forces
+namely
+                                                              As shown in Figure 1 7 , observed
+(a)     (1.13/4 V ) V code' v = 0.85 -
+               r            T                         extremes of column axial load compare well
+        a probable level of wall shear                with the design level forces (P         =
+        strength that would be obtained               D 4- L + P   , P    . = 0.90 - P e       m   a   x
+
+
+                                                                 eq' e m x n           eq)
+                                                                                           x   8
+
+
+        from the application of "strength
+        design".                                      Actions observed during the Pacoima Dam
+                                                      event were, as would be expected, slightly
+(b)     cad) V   , ,   =   oo =   1.45   wall shear   more extreme.   Axial loads for the interior
+         Y
+           o   code                                   column of type 1 frames are not shown, as
+                                                      these were subject to little variation in
+                                                      magnitude.
+-200'
+
+
+
+
+-300
+
+
+         (Q)4M      WALL             EL                CENTRO
+
+ 600T
+
+
+
+
+ 400"
+
+
+
+
+ 200 "
+
+
+
+
+-600
+
+
+
+
+         (b)4M       WALL           PRCOIMfl                     DRM
+ Fig. 10 - Horizontal Deflection History for the 4 m Walled Structure
+
+
+
+              12
+
+                                                                                                             \        N Z S 4203
+              10                                       4m Wall                                                   \      code limit
+                                                                                                                      \
+              8
+
+         00                                                /
+
+                                                                     Elastic analysis
+
+                                                 ^                   El   Centro
+                                                                                                                 /
+                                             /
+                                                                     Pacoima Dam
+                                         /
+                                    -/
+                     k   2
+                                    / 2 4 6 8 10 12 H
+                   200          0                200           400         600     (mm)                    001        0-02
+                             Horizontal          deflection                                             Interstorey       drift
+                                                                                                         Floor   height
+
+ Fig. 11 - Extreme Horizontal Deflection                                                  Fig. 12 - Extreme Interstorey
+           Envelope for the 4 m Walled                                                              Drift Envelope for the
+           Structure                                                                                4 m Walled Structure
+                                                                                                                                            193
+
+
+
+
+-8000
+                                   SHEAR
+
+    Fig. 13 - Extreme Wall Shear Force                                      Fig. 14 - Extreme Wall Bending
+              Envelope                                                                Moment Envelope
+
+
+
+                                                                                                ft—
+                                                                                                  i
+
+                         Frame 2                                     Frame 1                      s                             Frame 1
+                           col.                                      int. col.     '    \J            1                         ext. col.
+                                                                                                      s
+                                                                                         Ir
+                                                                                                                                    I
+                                                                                                          — i
+                                                                                                                  (
+
+                                                                                                                  i
+                                                                                                                  i
+                                                                                                                      \L
+                        -Max. storey demand                                                                           i
+                                                                                                                      i.
+
+
+                         Probable yield                                                                                    L
+                                                                                                                           1
+
+
+
+
+                                                                                         i
+                             strength                                                                                       1
+                                                                                                                            1
+                                                                                                                           t
+                                                                                                              i
+                                                                                                          i   !_
+                                                                                                                           T
+                                                                                                                            i
+                                                                                                                            1
+
+
+                                                                                                                                i
+
+        500      1000     (kN.m)                  1000     2000     3000 (kN.m)         500       1000                           1500 (kN.m)
+
+        Moment                                          Moment                                Moment
+
+
+                                     (a) El Centro excitation
+
+
+
+
+                                                                                                Frame 2
+                                                                                                  col.
+
+
+                                                                                              •^r Max. storey demand
+                                                                                                 Probable yield
+                                                                                                      strength
+
+
+
+
+                 500      1000     1500 (kN.m)   1000    2000     3000 (kN.m)     500           1000                  (kN.m)
+                        Moment                      Moment                          Moment
+
+
+                                     (b) Pacoima Dam excitation
+   Fig. 15 - Envelopes of Maximum Recorded Column Bending Moment and Probable
+             Simultaneous Strength Capacity
+                                                                                                                                                                                          Frame 2
+                                                                                                                                                                                            col.
+
+
+
+                                                                                                                                                                                           • Design
+
+                                                                                                                                                                                            El Centra
+
+                                                                                                                                                                                            Pacoima Dam
+
+
+
+
+                                         200                             3 00   400 {kN)                             200   400    600      800 (kN)                 100       200        300 (kN)
+                                                   Shear                                                                    Shear                                            Shear
+
+
+Fig. 16 - Envelopes of Maximum Recorded Column Shear Force and Design                                                                                                                            (Code)
+          Shear Force, V -                                                               CQ        L
+
+
+
+
+                                                                                                                                                                      - - - Design
+
+                                                                                                                                                                      —      El Centro
+
+                                                                                                                                                                             P a c o i m a Dam
+
+
+
+                                                                                                                                                                     e.max
+
+                                                                                                                                                                     e,min
+
+
+
+                                                                                 10      20                     30     4 0 (MN)           10        20          3-0 (MN)
+                                                                                A x i a l compression                                   A x i a l compression
+
+Fig. 17 - Extreme Column Axial Load Envelopes and Design (Code) Axial Forces,
+          P    and P •
+           max      mm
+
+      12   \
+               \
+                    V
+                        \
+                                                                                                                                    — frlext.
+                            •                                                                                                                        >fr1ext.
+                                \
+                                                                                               \
+      10
+                                    \
+                                        \e>
+                                           \                               Frame 1                 V
+                                                                                                    \                  Frame 2
+                                                                                                                                    fr2-U-
+                            y                 \
+                            1                      x
+                                                                           beams                           «            beams                                                            El Centro
+                                                       \
+                                                        \
+      8                                                         \                                                                                                                        Pacoima Dam
+                                                                    \
+C/)                                                                  ©
+                                                                     \
+                                                                     1
+§6                                                                   1
+                                                                     i
+
+U_                                                                  «
+                                                                     /
+                                                                                                                                                 Frame 1                          Wals
+                                                                /
+                                                                    /
+                                                                                                                                                  cols
+      4                                                 /
+                                                            /                                                  r f
+                                                       /
+                                                                                                                                                           t
+                                    /           /                                                          /
+                                                                                                       i
+                                /              /                                                   i                                      frlint&extfrZ
+      2
+                            f             /
+                                                                                                                                                    P \
+                                                                                                                                            'ft1ext,fr.2
+                                4                                                          *
+                                                                                                                                         _Lfr.1intt
+                                                                                                                                                 f —
+      0            0 005                       0-01 ( R a d i a n s )                         0 005 0 01 (Radians)                      0005    OOI(Radians)               0-001 0 002    (Radians)
+
+                   PLASTIC                                      ROTATION                  PLASTIC                    ROTATION        PLASTIC         ROTATION         PLASTIC ROTATION
+
+Fig. 18 - Envelopes of Maximum Recorded Plastic Hinge Rotations
+                                                                                                                                                                                               195
+
+    4.2.7           Plastic Rotations                                                                                                     c o , the height dependent
+                                                                                                                                           v                              co factor for
+                                                                                                                                          a pure cantilever shear w a l l , is found
+       Figure 18 shows envelopes of maximum                                                                                               in NZS 3101 (1) and is shown in Figure 22.
+positive or negative hinge rotations observed
+in beams, columns and walls for the two                                                                                                          It may be observed that for a shear
+earthquake records.   Beam hinge rotations                                                                                                ratio of 100% (i.e. all seismic shear
+are considerably below the figure of 0.03 5                                                                                               taken by the w a l l ) , co* = 1.60, the
+radians, a level of deformation considered
+to be available for beams detailed                                                                                                        recommended factor for pure shear walls ( 1 ) ,
+according to the provisions of NZS 3101 (1).                                                                                              and c o * = 1.00 for zero values of shear
+The apparent discrepancy of El Centro                                                                                                 ratio.   Thus the scheme merges smoothly
+rotations exceeding Pacoima Dam rotations                                                                                             with the existing procedure for cantilever
+in Figure 18(b) is related to a small                                                                                                 shear walls.
+difference in the modelling of beam hysteresis
+used for those two analyses and is not                                                                                                       Figure 21 shows also the design
+considered to be of any importance.                                                                                                   zone levels calculated using this scheme,
+Column hinge rotations during the El Centro                                                                                           and it is evident that the El Centro
+excitation were clearly of an acceptably                                                                                              levels of shear are safely overestimated.
+low order, while those observed during the                                                                                            Although the scheme cannot cope with
+Pacoima Dam event indicate greater but                                                                                                base levels of shear likely to occur in a
+sustainable demands.   Wall rotations                                                                                                 Pacoima Dam type event, this must be
+indicate similar trends with significant                                                                                              viewed in light of the very low likelihood
+yield under El Centro occurring at base                                                                                               of such an event occurring.   Calculations
+level only.                                                                                                                           not presented here (11) indicate that
+                                                                                                                                      quantities of shear reinforcement required
+    5.              ASSESSMENT AND MODIFICATION OF THE                                                                                near the base are"not excessive.•
+                    DESIGN METHOD
+                                                                                                                                          5.2           Wall Moment
+       For the purposes of this assessment,
+emphasis has been placed on the responses                                                                                                    The proposed design scheme, based
+to the El Centro accelerogram.   It is                                                                                                on the procedure recommended for cantilever
+believed that this excitation is much                                                                                                 shear walls (2) is considered satisfactory
+more credible in the context of New Zealand                                                                                           in view of the low inelastic demands of
+seismicity than the Pacoima Dam event.                                                                                                the El Centro excitation.   However, in an
+                                                                                                                                      attempt to eliminate all upper level wall
+    5.1             Wall Shear                                                                                                        yield, it is suggested that a slightly
+                                                                                                                                      more conservative design envelope be used,
+       Figure 19 shows the relationship                                                                                               as shown in Figure 23.
+between shear ratio (defined in section 3.3)
+and the effective wall dynamic magnifi-                                                                                                   5.3           Column Moments
+cation factor, c o * , defined as follows:
+                         .            wall, max                                                                                              Although it has been decided that
+                    CO       =   T    y               - - ~                                                                           columns should enjoy a significant measure
+                     v
+                                 ^o       code, base                                                                                  of protection against yielding, consider-
+                                                                                                                                      ations of economy dictate that over-
+where V                                    = maximum wall base                                                                        conservatism in selection of design
+       wall, max
+shear force observed during the dynamic                                                                                               actions should be avoided.    Figure 24
+analysis, <J> = wall overstrength factor,                                                                                             shows the degree of column protection
+                                                                                                                                      available to the frames which, it may be
+taken as 1 . 4 5 ,                    and V           c   o   d   e       f       b   a   g   e           = wall                      recalled, were designed using arbitrarily
+base shear force resulting from code                                                                                                  basic co factor of 1.45 (Figure. 8) . As
+specified loading.   The "severity                                                                                                    changing wall size apparently exerts no
+contours"indicated in Figure 19 are natur-                                                                                            consistent trend on protection, a co
+ally different for the El Centro and                                                                                                  factor independent of wall shear ratio
+Pacoima Dam events.   Figure 20 shows an                                                                                              was deemed appropriate and a basic reduced
+empirical shear force envelope which is                                                                                               value of 1.20 is suggested (see Figure 2 5 ) .
+based on trends in the distribution of                                                                                                Such a factor allows a substantial reduction
+maximum shear forces for all three structures.                                                                                        in column flexural reinforcement require-
+The application of this procedure to the                                                                                              ments and yet offers good protection
+three walls studied is seen in Figure 21.                                                                                             against yielding for El Centro levels of
+                                                                                                                                      load (11).    Because of the low value of
+        In view of the importance of                                                                                                  co, further refinement, taking into
+suppressing non ductile failure of the                                                                                                account the value of the wall shear ratio,
+shear w a l l s , the following simple approach                                                                                       is not justified.
+to wall shear design is tentatively
+suggested:       Design shear forces should                                                                                           5.4               Column Shear
+be based on the envelope shown in Figure 20,
+                                                                                                                                               Column shear force is adequately
+w   i   t
+         c o d e , base
+            h   V                     a   n       d           f       a       c   t   o   r       f   o   u   n   d   f   r   o   m
+
+                                                                                                                                      estimated by the formula 1.3 d> V       (1)
+the normal static analysis procedures.                                                                                                                            1
+                                                                                                                                                                      o  code  T   n   v   1
+
+
+
+Effective wall dynamic magnification factor,                                                                                          at all levels by the extreme top and
+c o * , may be found from the "design contour"                                                                                        bottom of the structure.     It is suggested
+o¥ Figure 19, the value selected being                                                                                                that 2 . 0 A V   .   and 2.5  d> V  ,
+                                                                                                                                                  o  code   Y
+                                                                                                                                                                    o code r
+
+appropriate to the shear ratio of the
+structure under consideration.       The                                                                                              respectively should be used for assessing
+equation of this design contour, c o * =
+                                                                                                                                      V
+                                                                                                                                       col      -
+                                                                                                                                                a   t
+                                                                                                                                                      locations.
+                                                                                                                                                        t   h e s e
+                                                                                                                                                                   Again,
+                                                                                                                                                                      2
+
+
+
+
+1 + 0.6 x SHEAR RATIO, may be generalized                                                                                             quantities of transverse steel in the
+to a form suitable for walls of any height                                                                                            columns implied by these design forces
+via the equation co* = 1 + (co - 1) x                                                                                                 are not great (11) and indeed are often
+SHEAR RATIO.                                  V                                           V
+                                                                                                                                      subordinate to the demands of confinement.
+Fig. 19 - Variation of Effective Wall                                                   Fig. 20 - Proposed Empirical
+          Dynamic Magnification Factor                                                            Wall Shear Force
+          With Shear Ratio                                                                        Design Envelope
+
+
+
+
+    ^          —|      1     JJ   1        H — ^   1
+                                                       H — H          1—f     11
+                                                                                        1
+                                                                                            1i   I    i   \ — m     I   I i   f   1
+                                                                                                                                      -
+     10   20    30    40     50   60   7-0(MN)         20      40    6 0 8 0 100 (MN)       20   40       60   8 0 100 120 (MN)
+                     SHEAR                                          SHEAR                                 SHEAR
+
+
+ Fig. 21 - Envelopes of Maximum Recorded Wall Shear Force and Proposed Scheme
+           Design Forces
+
+
+
+
+ Fig. 22 - Variations of Pure                                         Fig. 23 - Original and Modified Wall
+           Cantilever co Factor        v
+                                                                                Bending Moment Envelopes
+           with Number of Storeys
+                                                                                                                                                   197
+
+5.5        Column Axial Force                            Step 5 For both directions of applied
+                                                                lateral load, compute the flexural
+       As discussed earlier, it is felt                         overstrength of each potential
+that column axial loads for the building                        plastic hinge, and determine the
+component of frame-shear wall structures                        moment induced shear forces, V ,                                       Q e
+
+
+are adequately assessed by the procedures                       in each beam span.
+suggested (1) for pure space frames.
+Although column co factors do have an                    Step 6 Determine the beam overstrength
+influence on design axial loads this is not                     factor, d> , at the centreline of
+great and the proposed changes to column                                  o        Y
+
+
+
+                                                                each column for both directions of
+moment dynamic magnification factor co
+                                                                loading, using fixed values of
+do not significantly affect axial forces.
+                                                                <f> = 1.4 and 1.1 for ground and
+                                                                    o
+
+
+
+5.6        Beam Moment                                          roof levels respectively.
+
+       The adequacy of the beam design                   Step 7 Derive column design shear forces,
+scheme, involving moment redistribution                         V   ,, at each level according to
+in both horizontal and vertical directions                        col'
+is judged by consideration of the inelastic                     equation a <J>      where a hasQ
+                                                                                                   v
+                                                                                                       c   o   d   e
+
+
+
+rotations indicated in the analyses.      The                   values of 2.5, 1.3 and 2.0 for
+generally low level and smooth variation                        ground, intermediate and roof
+of these demands is taken to confirm                            levels respectively.
+the suitability of the scheme as proposed
+in Section 3.4.     It also supports the                 Step 8 Determine at each floor P    =   ^   r                                 R
+                                                                                                                                               y
+                                                                                                                                                    v
+                                                                                                                                                        o   e
+
+selection of a beam hinging mechanism as                        where R   is an axial load reduction
+a suitable means of energy dissipation.                         factor   found in Table 1-2 of Ref. (1)
+                                                                              V
+
+
+It seems advisable, however, to endeavour
+to match beam demand as accurately as                    Step 9 Determine design axial loads P         =
+possible at the top of these multistorey                                              . = 0 . 9 B'
+                                                                                                   max
+                                                                D + L  + P    and P
+structures.    This is to prevent the                             p R     P
+                                                                           eq       e,mm
+                                                                                       O R T                           q
+
+
+
+
+build-up of excessive beam strength in                             eq  at each floor.
+the upper levels of the structure, thus
+keeping beam   <j>  factors to manageable                SteplO Calculate magnified column centreline
+levels and so      avoiding large column                        moments above and below beam
+flexural reinforcement demands in the                           centrelines as   d> coM   , , where
+                                                                                  o     code                   T
+
+
+upper storeys.                                                  the column dynamic magnification
+                                                                factor,  co, takes values of unity
+6.         SUMMARY OF THE PROPOSED DESIGN                       at ground and roof levels and
+           METHOD                                               1.2 elsewhere.
+
+       Set out in this section is a step-                Stepll Critical column design moments
+by-step exposition of the proposed design                       (at the top or soffit of beams) to
+procedure for coupled frame-shearwall                           be considered with design axial
+structures.    This is based in large part                      loads (Step 8) are calculated as
+on a recommended method for the evaluation
+of column actions in ductile multistorey                        M                 R    (<j) co M   .                           0. 3 h, V    J
+frames ( 1 ) . The procedure covers the                             col            m    r
+                                                                                         o      code                                 b   col
+flexural design of b e a m s , columns and                      where R is an axial load dependent
+walls and the evaluation of design shear                        moment reduction factor ( 1 ) , and
+forces for columns and walls.                                   V"col is found in Step 7.
+
+Step 1 Derive the bending moments and                    Stepl2 Determine design axial loads for
+       shear forces for all members of                          the shear walls D + 1.3 L„ + E
+       the frame-shear wall system for                          and 0.9B - E .
+       the specified lateral earthquake
+       load only, using an appropriate                   Stepl3 Construct the wall bending moment
+       elastic analysis.   These actions                        envelope (Figure 23(b)) and together
+       are subscripted "code".                                  with the design axial loads,
+                                                                determine the required amount and
+Step 2 Superimpose the beam bending                             distribution of longitudinal
+       moments resulting from the lateral                       reinforcement over the full height
+        load upon the appropriately factored                    of the w a l l .
+       g r a v i t y load m o m e n t s .
+       t                                  Subsequently
+       carry out a horizontal moment                     Stepl4 Calculate the wall base flexural
+       redistribution in accordance with                        overstrength factor  <jj .
+       Section 3.4.3.4 of Ref 1.
+                                                         SteplS Compute the "shear ratio" for the
+Step 3 A vertical moment redistribution                         structure, defined as
+       allowing a reduction of up to 20%
+       of horizontally redistributed                                wall,base
+       beam moments may be implemented.
+                                                                 total,base code
+       It is recommended however (Section
+                                                                Subsequently calculate the wall
+       5.6) that strength demand at
+                                                                dynamic shear magnification factor
+       upper floors be matched as closely
+                                                                from the equation     co* = 1 + (co - 1)
+       as possible.
+                                                                x shear ratio, w h e r e co                                v
+                                                                                                                                           v
+
+
+
+
+Step 4 Design all critical beam sections                        is the pure cantilever wall dynamic
+       so as to provide the required                            shear magnification factor (1) .
+       dependable flexural strengths                     Stepl6 Calculate wall base design shear
+       and, determine and detail the                            f o r c e , using S t e p s 14 a n d 15 as
+       reinforcement for all beams of the
+       frame.
+198
+
+     wall,base   v o
+                  r
+                        code,base                                 Walls for Earthquake Resistance",
+                             Construct the design shear           Research Report No. 81-1, University
+        force envelope as shown in Figure 20                      of Canterbury, February 1981, 13 3pp
+        and determine the required trans-
+                                                          3.      Carter, B.H.P., "The Seismic
+        verse reinforcement.
+                                                                  Behaviour of Reinforced Concrete
+ 7.      CONCLUSION                                               Frame-Shear Wall Structures",
+        The study suggests that the                               Master of Engineering Report,
+coupled frame-shear wall structural system,                       University of Canterbury, 1980, 118pp.
+currently in considerable favour for
+medium-high rise construction in New                      4.      Jury, R.D., "Seismic Load Demands on
+Zealand is capable of providing good                              Columns of Reinforced Concrete Multi-
+resistance to seismic attack.     The                             storey Frames", Master of Engineering
+series of dynamic analyses performed on                           Report, University of Canterbury,
+3 twelve-storey structures indicate                               1978, 129pp.
+levels of member actions that can be
+estimated with reasonable accuracy on the                 5.      Paulay, T., "Developments in the
+basis of the traditional simple static                            Design of Ductile Reinforced
+lateral load analysis.     Satisfactory                           Concrete Frames", Bulletin of the
+design of the frame components of these                           New Zealand National Society for
+hybrid structures could be achieved                               Earthquake Engineering, V o l . 1 2 ,
+by following a capacity design procedure                          N o . 1, March 1979, pp. 35-48.
+based closely.on that for pure frames.
+The shear wall elements can also be                       6.      Code of Practice for General
+designed in a relatively straight forward                         Structural Design and Design
+manner.     Some details of a recommended                         Loadings for Buildings, 1976,
+procedure have been presented.     The                            NZS4203, 80pp.
+major features of the procedure are
+ (a)    A wall shear design scheme based                  7.      N e w Zealand Reinforced Concrete
+        on an empirically derived envelope                        Handbook", New Zealand Portland
+        and a dynamic magnification factor                        Cement Association 197 9.
+        which reflects relative wall-frame
+        stiffness as well as wall height.                 8.      Sharpe, R.D. and Carr, A.J.,
+                                                                  "Inelastic Frame Dynamic Analysis",
+(b)        Column flexural design using a                         Computer Program Library, Department
+           basic dynamic magnification factor                     of Civil Engineering, University
+           of 1.20 and                                            of Canterbury, 197 9, 17pp.
+
+(c)        Beam flexural design allowing both             9.      Sharpe, R.D., "The Seismic Response of
+           horizontal and vertical moment                         Inelastic Structures", Ph.D. Thesis,
+           redistribution.                                        University of Canterbury, Christ-
+                                                                  church, New Zealand, November, 1974,
+       However, attention is drawn to the                         188pp.
+fact that the research reported herein
+constitutes only a first step in an                       10.     Archer, J.A., "Consistent Mass Matrix
+investigation of the seismic behaviour                            for Distributed Mass Systems",
+of frame-shear wall structures.    Research                       Journal of the Structural Division
+is currently being undertaken at the                              A S C E , V o l . 89, No. S T 4 , August 1963.
+University of Canterbury involving an
+examination of the inelastic response of                  11.     Goodsir, W.J., "The Response of
+both 6 and 18 storey structures to                                Coupled Shear Walls and Frames",
+simulated seismic attack.   In addition,                          Master of Engineering Report,
+the effect on response of foundation                              University of Canterbury, 19 82,
+compliance is under study, with preliminary                       156pp.
+findings suggesting that overall
+structural response is not unduly sensitive
+to wall base fixity.   It is hoped that                   10.     NOTATION
+at the conclusion of this research
+programme, a comprehensive and yet simple                 Ag      = Gross area of     section
+design procedure for coupled frame'shear .
+wall structures will be obtained.                         A       = Area of tension steel
+                                                              g
+
+
+
+
+8.         ACKNOWLEDGEMENTS                               A .     = Total steel area in section
+                                                           st
+        The work on which this paper is                   b       = Width of section
+based w a s carried out at the University
+of Canterbury, by the first author in                     b w,    = Web width of section
+the course of his Master of Engineering
+studies ( 1 1 ) , under the guidance of the               C       = Basic seismic coefficient for the
+co-authors.                                                       derivation of C^
+
+9.         REFERENCES                                     C^      = Lateral force coefficient for the
+                                                                  equivalent static analysis = CISMR
+1.         Code of Practice for the Design
+           of Concrete Structures, 1982, NZS              D       = Dead   load
+           3101, Parts 1 and 2, Standards
+           Association of New Zealand, 283pp.             E       = Earthquake load
+
+2.         Paulay, T., "The Design of                             = Specified 28 day concrete        strength
+           Reinforced Concrete Ductile Shear
+                                                                                                                        199
+
+               = Specified yield strength of                        Reinforcement ratio = A / b h     g         w   b
+
+                 steel reinforcement
+                                                                    Column reinforcement        ratio
+               = Subscript denoting gross      section             A
+                                                                       st   /   b   h
+
+
+                 property
+                                                                    Strength reduction factor
+               = Overall depth of beam
+                                                                   Beam overstrength factor, defined
+               = Total height of building                          as the ratio of overstrength
+                                                                   moment of resistance to moment
+               = Importance factor used in                         resulting from code specified
+                 derivation of                                     loading
+
+               = Length of wall section                            General dynamic magnification
+                                                                   factor OR dynamic magnification
+               = Plastic hinge length                              factor for column moment
+
+L              = Live load                                         Dynamic magnification factor
+                                                                   for isolated cantilever shear
+                                                                   walls
+               = Reduced live load
+                                                                    Proposed dynamic magnification
+               = Structural material factor                         factor for wall shear for use-in
+                 used in derivation of                              frame shear wall structures
+               = Column centreline bending
+    code
+                 moment derived from code                TABLE 1 - Natural Period of First Mode
+                 specified lateral seismic                         of Vibration (seconds)
+                 loading only
+
+    col,red = Column design moment at the
+              face of the beam-column joint               Wall size                           4 m          6 m           8 m
+
+M.             = Ideal flexural strength
+                 (= A f y j d for beams)
+                     g
+                                                          Approx. method NZS 4203            2. 04        1.88          1. 71
+
+P              = Maximum total design axial load
+     , m   x
+                acting on a column during an              Modal analysis                     1. 96        1.78          1.56
+                 earthquake = D + L^ + P _
+                                   K.   eq
+
+P      . = Minimum total design axial load               TABLE 2 - Summary of Wall Flexural                     Reinforcement
+    e min
+     '     acting on a column during an
+           earthquake = 0.9D - P         e g
+
+
+
+
+                 Earthquake induced axial column                                           4 m Wall
+    eq           force resulting from beam                Level
+                 overstrengths = R IV
+                                  v   oe                                    End Bars        Distributed Bars
+                 Risk factor used in derivation
+                 of C ,                                     12                  8 - D32      2 - D16 @ 350 crs
+                                                                                                           n
+                Moment reduction factor dependent           11                  8 - D32
+                on axial load level and oo
+                                                                                                           ii
+                                                            10                  8 - D3 2
+                 Reduction factor accounting for
+                 the likelihood of beam overstrength         9                  8 - D32     2 - D16 @ 300 crs
+                 occurring at all levels of a frame
+                                                             8              10 - D32
+                 Structural type factor used
+                                                                                                           it
+                 in derivation of C-,                        7              10 - D32
+
+                                                             6              12 - D32         2 - D16 @ 300 crs
+    code       = Shear force in a member due to the
+                 design loads
+                                                             5              16 - D32
+V code,base          Shear force in wall at
+                                                             4              20 - D32                       II
+
+                     ground level due to the
+                     design loads
+                                                             3              24 - D32         2 - D16 @ 250 crs
+                 Column design shear force = w cf>
+ col                                                 0
+                                                             2              24 - D32                       it
+
+
+
+                  code
+                                                             1              24 - D32                       II
+
+
+
+
+V total          Code design base shear = C^
+                                                         Note:    Bar sizes and spacing in mm units
+                Total seismic weight of a building                The group of 24 - D32 bars in the end
+                                                                    region corresponds w i t h p = 4.1%
+                 Interstorey drift                                  reinforcement content in that region
+200
+
+TABLE 3    - Assumed Member Stiffness
+             Properties for Dynamic Analysis
+
+
+ Property                       I                                           A
+
+ Walls                    0.6 I          g
+                                                                      0.6       A   g
+
+
+
+
+ Columns                  0.8       l    g
+                                                                      0.8       A   g
+
+
+
+
+ Beams                    0.5 I          g
+                                                                      0.5       A   g
+
+
+
+
+                 12                                           1
+                                                 04-          Frame 1                                          Frame 1                               Frame 2
+                                                              ext. cot.
+
+                                r•
+                 10                                                                                            int. col.                               col.
+                                             O
+                                                          *
+
+                                !                      o e +
+                                                                                                                o 4m Wall
+                                                                                                                • 6m Wall
+                                                                                                                  8m Wall
+                              ;                    c
+
+                              J              0                    •    +
+
+
+
+                              I
+                              1-0     20       30                                           10         20       30                    10         20      30
+                            Probable yield moment                                          Probable yield moment                     Probable yield moment
+                          Maximum observed moment                                        Maximum observed moment                   Maximum observed moment
+
+                                                                             (a)        El Centro excitation
+
+
+                                                                                                                                   -1°               I       [
+                                  -»|o                         Frame 1                                       Frame 1                                Frame 2
+                                                               ext. col.                                     int. col.               ,o               col.
+                                                                                                1 cw                                 I o • +
+
+                                                                                                              o 4m Wall
+                                                                                                              • 6m Wall
+                                                                                                                                     !         0+
+
+                 o 6                                                                                          + 8m Wall
+                 u_
+                                                                                                                                     I                   •
+                      4
+                                                                                                                                     1     0
+
+
+
+                      2
+                                                                                                                                     1*
+                                                                                                                                     I
+                                 10      20      30                                            10       20      30                   10       20      30
+                              Probable yield moment                                           Probable yield moment                Probable yield moment
+                             Maximum observed moment                                        Maximum observed moment               Maximum observed moment
+
+                                                                            (b)         Pacoima Dam excitation
+
+                  Fig. 24 - Degree of Flexural Protection Afforded Column Members
+
+
+
+
+                                                                                                            Proposed
+                                                                                                            design
+                                                                                                            values
+
+                                                                                                             Range of
+                                                                                                       X
+                                                                                                        A    code (NZS 3101)
+                                                                                                             values for columns
+                                                                                                             of ductile frames
+                                                                                                             without walls
+
+
+
+
+                  Fig. 25 -              Proposed Design Column Dynamic Magnification Factor Distribution,                                                       w
+

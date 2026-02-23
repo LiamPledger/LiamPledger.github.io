@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RC column drift capacity model by Liam Pledger.">
+  <title>Liam Pledger | RC Column Model</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="model-column">
+  <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">Menu</button>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <h1>Liam Pledger</h1>
+      <p>Postdoctoral Researcher<br>ETH Zurich</p>
+      <a class="cv-link" href="assets/docs/CV_Liam_Pledger.pdf" target="_blank" rel="noopener">Download CV</a>
+    </div>
+
+    <nav class="side-nav">
+      <details open>
+        <summary>About</summary>
+        <a data-nav="overview" href="index.html">About and Career</a>
+      </details>
+
+      <details open>
+        <summary>Publications</summary>
+        <a data-nav="publications" href="publications.html">Publications and Citations</a>
+      </details>
+
+      <details open>
+        <summary>ML Models</summary>
+        <a data-nav="model-column" href="model-column.html">RC Column Drift Capacity Model</a>
+        <a data-nav="model-wall" href="model-wall.html">RC Wall Drift Capacity Model</a>
+      </details>
+
+      <details open>
+        <summary>Supplementary Material</summary>
+        <a data-nav="resources" href="resources.html">Resources and Supplementary Material</a>
+      </details>
+    </nav>
+
+    <div class="sidebar-foot">
+      <a href="mailto:liam.pledger@ibk.baug.ethz.ch">liam.pledger@ibk.baug.ethz.ch</a>
+      <a href="https://github.com/LiamPledger" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://orcid.org/0009-0006-5749-2167" target="_blank" rel="noopener">ORCID</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <section class="panel hero">
+      <p class="eyebrow">ML Model</p>
+      <h2>RC Column Drift Capacity Model</h2>
+      <p>
+        Parameter ranges match your Colab notebook interface.
+      </p>
+    </section>
+
+    <section class="panel">
+      <div id="column-model-form" class="model-form"></div>
+      <div id="column-model-result" class="result">Adjust parameters to generate a prediction.</div>
+    </section>
+  </main>
+
+  <script src="assets/data/column_model_dataset.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

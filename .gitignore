@@ -1,0 +1,27 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Root scratch exports and web scrape artifacts
+/bing_*
+/brave_*
+/ddg_*
+/crossref_*
+/openalex*
+/orcid*
+/s2_*
+/rj_*
+/wcee_*
+/bulletin_*.html
+/bulletin_*.txt
+/github_scan.json
+/liam_cv.txt
+/openalex.json
+/orcid.json
+/readme_*.md
+
+# Local extracted repos and archives (kept outside published site)
+/drift_repo/
+/repo_*/
+/*.zip
