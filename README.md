@@ -1,40 +1,60 @@
 # Liam Pledger Academic Website
 
-This repository contains a static website in `site/` deployed with GitHub Pages.
+This repository contains:
 
-## LightGBM Models (Browser Inference)
+- `site/`: static frontend deployed with GitHub Pages.
+- `api/`: Python inference API that loads the exact Colab-trained model artifacts (`pretrained_model.pkl`).
 
-The two drift-capacity pages now run LightGBM inference directly in the browser from exported Colab model text files.
+End users visiting the website do **not** need Python installed. Only the deployed API host runs Python.
 
-Place these files in:
+Place the exact trained model files in:
 
-- `site/assets/models/column_model.txt`
-- `site/assets/models/wall_model.txt`
+- `api/models/column/pretrained_model.pkl`
+- `api/models/wall/pretrained_model.pkl`
 
-The feature engineering/order in `site/assets/js/app.js` matches the Colab notebooks.
+## Run Locally
 
-## Optional Model Path Overrides
-
-Edit `site/assets/js/model-config.js` if your filenames are different.
-
-## Local Preview
-
-From repo root:
+1. Start API (from repo root):
 
 ```powershell
+.\scripts\start-model-api.ps1
+```
+
+2. Serve website (separate terminal):
+
+```powershell
+cd site
 python -m http.server 8080
 ```
 
-Open: `http://localhost:8080/site/`
+3. Open:
+
+- Website: `http://localhost:8080/`
+- API health: `http://127.0.0.1:8000/health`
+
+## Configure API URL for Production
+
+Set your deployed API URL in:
+
+- `site/assets/js/model-api-config.js`
+
+Example:
+
+```javascript
+window.MODEL_API_BASE = "https://your-api-domain.example";
+```
+
+Then commit and push to GitHub.
 
 ## Deploy
 
-GitHub Pages deploys `site/` via `.github/workflows/deploy-pages.yml`.
+- GitHub Pages deploys `site/` via `.github/workflows/deploy-pages.yml`.
+- Deploy `api/` separately (Render, Railway, Fly.io, VM, etc.).
 
-## Push Updates
+## Push Changes
 
 ```powershell
 git add .
-git commit -m "Update website"
+git commit -m "Update website and model API wiring"
 git push
 ```

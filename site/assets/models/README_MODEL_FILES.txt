@@ -1,6 +1,7 @@
-Place exported LightGBM model text files from Colab in this folder:
+Model text files in this folder are legacy artifacts and are not used by the live model pages.
 
-- column_model.txt
-- wall_model.txt
+Live predictions come from the Python API endpoints:
+- /predict/column
+- /predict/wall
 
-Expected by site/assets/js/app.js unless overridden in site/assets/js/model-config.js.
+Configure the API base URL in: site/assets/js/model-api-config.js
