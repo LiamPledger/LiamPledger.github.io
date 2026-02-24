@@ -39,6 +39,9 @@
       <p>
         This page allows users to apply a machine learning model developed for estimating the drift capacity of RC walls based on given structural and geometric properties. 	Existing data of cyclic tests of RC walls were used to train a Gradient-Boosted Decision Tree (GBDT) machine learning algorithm to estimate drift capacity. Drift 	capacity was defined as the drift measured at a 20% loss in lateral resistance. A total of 426 RC wall tests were used to train the ML algorithm. The database of 	walls used in this study can be found in the GitHub repository.   
       </p>
+      <p>
+        The prediction shown on this page is served by the Python API using the exact Colab-trained model file.
+      </p>
 
       <p>
 	Please get in touch if you would like to share more tests not currently included in the repository. 
@@ -65,7 +68,7 @@
     </section>
   </main>
 
-  <script src="assets/data/wall_model_dataset.js"></script>
+  <script src="assets/js/model-api-config.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 </html>

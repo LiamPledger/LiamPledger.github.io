@@ -26,3 +26,12 @@ Thumbs.db
 /repo_*/
 /wall-drift-capacity-model-repo/
 /*.zip
+
+# Python API runtime and model artifacts
+/.venv/
+/api/.venv/
+/api/__pycache__/
+/api/models/**/*.pkl
+/api/models/**/*.pickle
+/api/models/**/*.txt
+/api/models/**/*.model

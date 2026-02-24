@@ -263,38 +263,45 @@ function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
 
-function buildStats(data, keys) {
-  return keys.map((key) => {
-    const values = data.map((row) => Number(row[key]));
-    const mean = values.reduce((a, b) => a + b, 0) / values.length;
-    const variance = values.reduce((acc, v) => acc + (v - mean) * (v - mean), 0) / values.length;
-    return { key, mean, std: Math.sqrt(variance) || 1 };
-  });
+function debounce(fn, delayMs = 120) {
+  let timer = null;
+  return (...args) => {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), delayMs);
+  };
 }
 
-function knnPredict(data, stats, query, k = 14) {
-  const scored = data
-    .map((row) => {
-      let sumSq = 0;
-      for (const stat of stats) {
-        const diff = (Number(query[stat.key]) - Number(row[stat.key])) / stat.std;
-        sumSq += diff * diff;
-      }
-      return { row, distance: Math.sqrt(sumSq) };
-    })
-    .sort((a, b) => a.distance - b.distance)
-    .slice(0, k);
+function getModelApiBase() {
+  if (window.MODEL_API_BASE && typeof window.MODEL_API_BASE === "string") {
+    return window.MODEL_API_BASE.replace(/\/+$/, "");
+  }
+  return "http://127.0.0.1:8000";
+}
 
-  let weighted = 0;
-  let wSum = 0;
-  for (const n of scored) {
-    const w = 1 / (n.distance + 1e-8);
-    weighted += Number(n.row.drift) * w;
-    wSum += w;
+async function predictFromApi(path, payload) {
+  const base = getModelApiBase();
+  const response = await fetch(`${base}${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) {
+    let detail = "";
+    try {
+      detail = await response.text();
+    } catch {
+      detail = "";
+    }
+    throw new Error(`API ${response.status}${detail ? `: ${detail}` : ""}`);
   }
 
-  const prediction = weighted / wSum;
-  return { prediction };
+  const data = await response.json();
+  const value = Number(data?.drift_capacity);
+  if (!Number.isFinite(value)) {
+    throw new Error("Invalid prediction response.");
+  }
+  return value;
 }
 
 function createModelForm(containerId, params, onValueChange) {
@@ -362,11 +369,33 @@ function createModelForm(containerId, params, onValueChange) {
 function setupColumnModel() {
   const formContainer = document.getElementById("column-model-form");
   const resultEl = document.getElementById("column-model-result");
-  const colData = Array.isArray(window.COLUMN_MODEL_DATA) ? window.COLUMN_MODEL_DATA : [];
-  if (!formContainer || !resultEl || !colData.length) return;
+  if (!formContainer || !resultEl) return;
 
-  const keys = ["a", "a_d", "fyt", "s_d", "fc", "v", "s_lbd", "a_s", "rhol_fyl", "rhot_fyt"];
-  const stats = buildStats(colData, keys);
+  let requestVersion = 0;
+  const debouncedPredict = debounce(async (state, version) => {
+    const query = {
+      a: state.a,
+      d: state.d,
+      s: state.s,
+      fc: state.fc,
+      fyl: state.fyl,
+      fyt: state.fyt,
+      rhol: state.rhol,
+      rhot: state.rhot,
+      v: state.v,
+      lbd: state.lbd
+    };
+
+    try {
+      const prediction = await predictFromApi("/predict/column", query);
+      if (version !== requestVersion) return;
+      resultEl.textContent = `Estimated drift capacity: ${prediction.toFixed(2)} %.`;
+    } catch (error) {
+      if (version !== requestVersion) return;
+      const detail = error instanceof Error ? ` (${error.message})` : "";
+      resultEl.textContent = `Model API is unavailable. Start the Python API and try again${detail}.`;
+    }
+  }, 160);
 
   createModelForm(
       "column-model-form",
@@ -383,21 +412,10 @@ function setupColumnModel() {
       { id: "lbd", label: "<i>l</i><sub>bd</sub> (mm) - Longitudinal bar diameter", value: 25, min: 5, max: 40, step: 1 }
       ],
     (state) => {
-      const query = {
-        a: state.a,
-        a_d: state.a / state.d,
-        fyt: state.fyt,
-        s_d: state.s / state.d,
-        fc: state.fc,
-        v: state.v,
-        s_lbd: state.s / state.lbd,
-        a_s: state.a / state.s,
-        rhol_fyl: state.rhol * state.fyl,
-        rhot_fyt: state.rhot * state.fyt
-      };
-
-      const pred = knnPredict(colData, stats, query, 14);
-      resultEl.textContent = `Estimated drift capacity: ${pred.prediction.toFixed(2)} %.`;
+      requestVersion += 1;
+      const version = requestVersion;
+      resultEl.textContent = "Calculating...";
+      debouncedPredict(state, version);
     }
   );
 }
@@ -405,11 +423,32 @@ function setupColumnModel() {
 function setupWallModel() {
   const formContainer = document.getElementById("wall-model-form");
   const resultEl = document.getElementById("wall-model-result");
-  const wallData = Array.isArray(window.WALL_MODEL_DATA) ? window.WALL_MODEL_DATA : [];
-  if (!formContainer || !resultEl || !wallData.length) return;
+  if (!formContainer || !resultEl) return;
 
-  const keys = ["m_vlw", "L_t", "fc", "t_h", "s_h", "rholb_fy", "rhotb_fy", "alr"];
-  const stats = buildStats(wallData, keys);
+  let requestVersion = 0;
+  const debouncedPredict = debounce(async (state, version) => {
+    const query = {
+      fc: state.fc,
+      Lw: state.Lw,
+      t: state.t,
+      h: state.h,
+      s: state.s,
+      rholb: state.rholb,
+      rhotb: state.rhotb,
+      Fy: state.Fy,
+      ALR: state.ALR
+    };
+
+    try {
+      const prediction = await predictFromApi("/predict/wall", query);
+      if (version !== requestVersion) return;
+      resultEl.textContent = `Estimated drift capacity: ${prediction.toFixed(2)} %.`;
+    } catch (error) {
+      if (version !== requestVersion) return;
+      const detail = error instanceof Error ? ` (${error.message})` : "";
+      resultEl.textContent = `Model API is unavailable. Start the Python API and try again${detail}.`;
+    }
+  }, 160);
 
   createModelForm(
     "wall-model-form",
@@ -425,19 +464,10 @@ function setupWallModel() {
       { id: "ALR", label: "<i>P</i> / (<i>A</i><sub>g</sub><i>f</i>'<sub>c</sub>) - Axial load ratio", value: 0.2, min: 0.0, max: 0.4, step: 0.01 }
     ],
     (state) => {
-      const query = {
-        m_vlw: state.h / state.Lw,
-        L_t: state.Lw / state.t,
-        fc: state.fc,
-        t_h: state.t / state.h,
-        s_h: state.s / state.h,
-        rholb_fy: state.rholb * state.Fy,
-        rhotb_fy: state.rhotb * state.Fy,
-        alr: state.ALR
-      };
-
-      const pred = knnPredict(wallData, stats, query, 14);
-      resultEl.textContent = `Estimated drift capacity: ${pred.prediction.toFixed(2)} %.`;
+      requestVersion += 1;
+      const version = requestVersion;
+      resultEl.textContent = "Calculating...";
+      debouncedPredict(state, version);
     }
   );
 }

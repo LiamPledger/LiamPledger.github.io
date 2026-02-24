@@ -1,6 +1,9 @@
 # Liam Pledger Academic Website
 
-This repository is structured for GitHub Pages deployment of the academic website.
+This repository contains:
+
+- `site/`: static frontend deployed to GitHub Pages.
+- `api/`: Python inference API for the two drift-capacity models.
 
 ## Repository Structure
 
@@ -9,67 +12,69 @@ This repository is structured for GitHub Pages deployment of the academic websit
 |-- .github/
 |   `-- workflows/
 |       `-- deploy-pages.yml
-|-- site/
-|   |-- index.html
-|   |-- publications.html
-|   |-- model-column.html
-|   |-- model-wall.html
-|   |-- resources.html
-|   `-- assets/
-|       |-- css/
-|       |-- js/
-|       |-- fonts/
-|       |-- data/
-|       |-- docs/
-|       `-- models/
-`-- README.md
+|-- api/
+|   |-- main.py
+|   |-- requirements.txt
+|   `-- models/
+|       |-- column/
+|       `-- wall/
+|-- scripts/
+|   |-- set-custom-domain.ps1
+|   `-- start-model-api.ps1
+`-- site/
+    |-- index.html
+    |-- about.html
+    |-- publications.html
+    |-- model-column.html
+    |-- model-wall.html
+    |-- resources.html
+    `-- assets/
 ```
 
-## Local Preview
+## Exact Colab Model Requirement
 
-From the repository root:
+For identical results to Colab, place the exact exported model files in:
+
+- `api/models/column/pretrained_model.pkl` (or `model.txt`)
+- `api/models/wall/pretrained_model.pkl` (or `model.txt`)
+
+Without these files, the API cannot serve exact Colab predictions.
+
+## Run Locally
+
+1. Start the model API:
 
 ```powershell
-python -m http.server 8000
+.\scripts\start-model-api.ps1
 ```
 
-Open `http://localhost:8000/site/`.
-
-## Deploy on GitHub
-
-1. Create a new GitHub repository (for example `liam-pledger-site`).
-2. Push this folder to the `main` branch.
-3. In GitHub, go to `Settings -> Pages`.
-4. Set `Source` to `GitHub Actions`.
-5. The `Deploy GitHub Pages` workflow will publish the `site/` directory.
+2. Serve the site locally (separate terminal):
 
 ```powershell
-git init
+python -m http.server 8080
+```
+
+3. Open:
+
+- Website: `http://localhost:8080/site/`
+- API health: `http://127.0.0.1:8000/health`
+
+## Deploy
+
+- GitHub Pages deploys only `site/` via `.github/workflows/deploy-pages.yml`.
+- The Python API must be deployed separately (for example Render/Railway/VM).
+- Set `window.MODEL_API_BASE` in `site/assets/js/model-api-config.js`:
+
+```javascript
+window.MODEL_API_BASE = "https://your-api-domain.example";
+```
+
+Then commit and push.
+
+## Push Updates to GitHub
+
+```powershell
 git add .
-git commit -m "Initial academic website"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
+git commit -m "Update website/API"
+git push
 ```
-
-## Configure Custom Domain
-
-1. Set your domain in `site/CNAME` by running:
-
-```powershell
-.\scripts\set-custom-domain.ps1 -Domain "www.yourdomain.com"
-```
-
-2. Commit and push the `site/CNAME` file.
-3. In GitHub, open `Settings -> Pages` and confirm the custom domain.
-4. Add DNS records at your registrar:
-- `A` record for root (`@`) -> `185.199.108.153`
-- `A` record for root (`@`) -> `185.199.109.153`
-- `A` record for root (`@`) -> `185.199.110.153`
-- `A` record for root (`@`) -> `185.199.111.153`
-- `CNAME` record for `www` -> `<your-username>.github.io`
-5. Enable HTTPS in GitHub Pages after DNS propagates.
-
-## Edit Your About Section
-
-Your About text is in `site/index.html` under the first `<section class="panel hero">`.
