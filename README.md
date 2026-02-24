@@ -1,80 +1,40 @@
 # Liam Pledger Academic Website
 
-This repository contains:
+This repository contains a static website in `site/` deployed with GitHub Pages.
 
-- `site/`: static frontend deployed to GitHub Pages.
-- `api/`: Python inference API for the two drift-capacity models.
+## LightGBM Models (Browser Inference)
 
-## Repository Structure
+The two drift-capacity pages now run LightGBM inference directly in the browser from exported Colab model text files.
 
-```text
-.
-|-- .github/
-|   `-- workflows/
-|       `-- deploy-pages.yml
-|-- api/
-|   |-- main.py
-|   |-- requirements.txt
-|   `-- models/
-|       |-- column/
-|       `-- wall/
-|-- scripts/
-|   |-- set-custom-domain.ps1
-|   `-- start-model-api.ps1
-`-- site/
-    |-- index.html
-    |-- about.html
-    |-- publications.html
-    |-- model-column.html
-    |-- model-wall.html
-    |-- resources.html
-    `-- assets/
-```
+Place these files in:
 
-## Exact Colab Model Requirement
+- `site/assets/models/column_model.txt`
+- `site/assets/models/wall_model.txt`
 
-For identical results to Colab, place the exact exported model files in:
+The feature engineering/order in `site/assets/js/app.js` matches the Colab notebooks.
 
-- `api/models/column/pretrained_model.pkl` (or `model.txt`)
-- `api/models/wall/pretrained_model.pkl` (or `model.txt`)
+## Optional Model Path Overrides
 
-Without these files, the API cannot serve exact Colab predictions.
+Edit `site/assets/js/model-config.js` if your filenames are different.
 
-## Run Locally
+## Local Preview
 
-1. Start the model API:
-
-```powershell
-.\scripts\start-model-api.ps1
-```
-
-2. Serve the site locally (separate terminal):
+From repo root:
 
 ```powershell
 python -m http.server 8080
 ```
 
-3. Open:
-
-- Website: `http://localhost:8080/site/`
-- API health: `http://127.0.0.1:8000/health`
+Open: `http://localhost:8080/site/`
 
 ## Deploy
 
-- GitHub Pages deploys only `site/` via `.github/workflows/deploy-pages.yml`.
-- The Python API must be deployed separately (for example Render/Railway/VM).
-- Set `window.MODEL_API_BASE` in `site/assets/js/model-api-config.js`:
+GitHub Pages deploys `site/` via `.github/workflows/deploy-pages.yml`.
 
-```javascript
-window.MODEL_API_BASE = "https://your-api-domain.example";
-```
-
-Then commit and push.
-
-## Push Updates to GitHub
+## Push Updates
 
 ```powershell
 git add .
-git commit -m "Update website/API"
+git commit -m "Update website"
 git push
 ```

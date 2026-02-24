@@ -271,37 +271,222 @@ function debounce(fn, delayMs = 120) {
   };
 }
 
-function getModelApiBase() {
-  if (window.MODEL_API_BASE && typeof window.MODEL_API_BASE === "string") {
-    return window.MODEL_API_BASE.replace(/\/+$/, "");
+function getColumnModelUrl() {
+  if (window.COLUMN_LGBM_MODEL_URL && typeof window.COLUMN_LGBM_MODEL_URL === "string") {
+    return window.COLUMN_LGBM_MODEL_URL.trim();
   }
-  return "http://127.0.0.1:8000";
+  return "assets/models/column_model.txt";
 }
 
-async function predictFromApi(path, payload) {
-  const base = getModelApiBase();
-  const response = await fetch(`${base}${path}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
+function getWallModelUrl() {
+  if (window.WALL_LGBM_MODEL_URL && typeof window.WALL_LGBM_MODEL_URL === "string") {
+    return window.WALL_LGBM_MODEL_URL.trim();
+  }
+  return "assets/models/wall_model.txt";
+}
+
+function parseNumberArray(raw) {
+  const text = String(raw || "").trim();
+  if (!text) return [];
+  return text.split(/\s+/).map((token) => {
+    const normalized = token.toLowerCase();
+    if (normalized === "inf" || normalized === "+inf" || normalized === "infinity" || normalized === "+infinity") {
+      return Infinity;
+    }
+    if (normalized === "-inf" || normalized === "-infinity") {
+      return -Infinity;
+    }
+    if (normalized === "nan" || normalized === "+nan" || normalized === "-nan") {
+      return Number.NaN;
+    }
+    return Number(token);
+  });
+}
+
+function parseIntegerArray(raw) {
+  const text = String(raw || "").trim();
+  if (!text) return [];
+  return text.split(/\s+/).map((token) => Number.parseInt(token, 10));
+}
+
+function parseLightGbmModelText(content) {
+  const lines = String(content || "")
+    .split(/\r?\n/)
+    .map((line) => line.trim());
+
+  if (!lines.length) {
+    throw new Error("Model file is empty.");
+  }
+
+  const model = {
+    objective: "",
+    maxFeatureIdx: null,
+    trees: []
+  };
+
+  let idx = 0;
+  while (idx < lines.length && !lines[idx].startsWith("Tree=")) {
+    const line = lines[idx];
+    if (line.startsWith("objective=")) {
+      model.objective = line.slice("objective=".length).trim();
+    } else if (line.startsWith("max_feature_idx=")) {
+      model.maxFeatureIdx = Number.parseInt(line.slice("max_feature_idx=".length), 10);
+    }
+    idx += 1;
+  }
+
+  while (idx < lines.length) {
+    const line = lines[idx];
+    if (!line) {
+      idx += 1;
+      continue;
+    }
+    if (!line.startsWith("Tree=")) {
+      idx += 1;
+      continue;
+    }
+
+    const tree = {
+      splitFeature: [],
+      threshold: [],
+      decisionType: [],
+      leftChild: [],
+      rightChild: [],
+      leafValue: [],
+      shrinkage: 1
+    };
+
+    idx += 1;
+    while (idx < lines.length) {
+      const row = lines[idx];
+      if (!row) {
+        idx += 1;
+        continue;
+      }
+      if (row.startsWith("Tree=") || row === "end of trees" || row === "feature_importances:") {
+        break;
+      }
+
+      const splitAt = row.indexOf("=");
+      if (splitAt >= 0) {
+        const key = row.slice(0, splitAt).trim();
+        const value = row.slice(splitAt + 1).trim();
+        if (key === "split_feature") tree.splitFeature = parseIntegerArray(value);
+        else if (key === "threshold") tree.threshold = parseNumberArray(value);
+        else if (key === "decision_type") tree.decisionType = parseIntegerArray(value);
+        else if (key === "left_child") tree.leftChild = parseIntegerArray(value);
+        else if (key === "right_child") tree.rightChild = parseIntegerArray(value);
+        else if (key === "leaf_value") tree.leafValue = parseNumberArray(value);
+        else if (key === "shrinkage") {
+          const shrinkage = Number(value);
+          tree.shrinkage = Number.isFinite(shrinkage) ? shrinkage : 1;
+        }
+      }
+
+      idx += 1;
+    }
+
+    if (!tree.leafValue.length) {
+      throw new Error("Model parsing failed: missing leaf values.");
+    }
+    model.trees.push(tree);
+  }
+
+  if (!model.trees.length) {
+    throw new Error("Model parsing failed: no trees found.");
+  }
+  return model;
+}
+
+function predictTreeValue(tree, features) {
+  let node = 0;
+  let guard = 0;
+  const maxSteps = Math.max(8, tree.splitFeature.length + 8);
+
+  while (node >= 0 && guard < maxSteps) {
+    guard += 1;
+
+    const featureIndex = tree.splitFeature[node];
+    if (!Number.isInteger(featureIndex) || featureIndex < 0 || featureIndex >= features.length) {
+      throw new Error("Model traversal failed: invalid feature index.");
+    }
+    const decisionType = Number.isInteger(tree.decisionType[node]) ? tree.decisionType[node] : 0;
+    if ((decisionType & 1) !== 0) {
+      throw new Error("Categorical LightGBM splits are not supported by the browser predictor.");
+    }
+
+    const featureValue = features[featureIndex];
+    const threshold = tree.threshold[node];
+    const defaultLeft = (decisionType & 2) !== 0;
+    const missingType = (decisionType & 12) >> 2; // 0: none, 1: zero, 2: NaN
+
+    let goLeft;
+    if (missingType === 1 && featureValue === 0) {
+      goLeft = defaultLeft;
+    } else if (missingType === 2 && Number.isNaN(featureValue)) {
+      goLeft = defaultLeft;
+    } else {
+      goLeft = featureValue <= threshold;
+    }
+
+    node = goLeft ? tree.leftChild[node] : tree.rightChild[node];
+  }
+
+  if (node >= 0) {
+    throw new Error("Model traversal failed: tree traversal did not terminate.");
+  }
+
+  const leafIndex = -node - 1;
+  if (!Number.isInteger(leafIndex) || leafIndex < 0 || leafIndex >= tree.leafValue.length) {
+    throw new Error("Model traversal failed: invalid leaf index.");
+  }
+
+  return tree.leafValue[leafIndex] * tree.shrinkage;
+}
+
+function predictLightGbm(model, features) {
+  if (!Array.isArray(features) || !features.every((value) => Number.isFinite(value))) {
+    throw new Error("Invalid input features for prediction.");
+  }
+
+  let prediction = 0;
+  model.trees.forEach((tree) => {
+    prediction += predictTreeValue(tree, features);
   });
 
-  if (!response.ok) {
-    let detail = "";
-    try {
-      detail = await response.text();
-    } catch {
-      detail = "";
-    }
-    throw new Error(`API ${response.status}${detail ? `: ${detail}` : ""}`);
+  if (!Number.isFinite(prediction)) {
+    throw new Error("Prediction failed.");
+  }
+  return prediction;
+}
+
+const lightGbmModelCache = new Map();
+async function loadLightGbmModel(url) {
+  const normalized = String(url || "").trim();
+  if (!normalized) {
+    throw new Error("Missing model URL.");
   }
 
-  const data = await response.json();
-  const value = Number(data?.drift_capacity);
-  if (!Number.isFinite(value)) {
-    throw new Error("Invalid prediction response.");
+  if (lightGbmModelCache.has(normalized)) {
+    return lightGbmModelCache.get(normalized);
   }
-  return value;
+
+  const promise = (async () => {
+    const response = await fetch(normalized, { cache: "no-cache" });
+    if (!response.ok) {
+      throw new Error(`Model file unavailable at ${normalized} (HTTP ${response.status}).`);
+    }
+    const text = await response.text();
+    return parseLightGbmModelText(text);
+  })();
+
+  lightGbmModelCache.set(normalized, promise);
+  try {
+    return await promise;
+  } catch (error) {
+    lightGbmModelCache.delete(normalized);
+    throw error;
+  }
 }
 
 function createModelForm(containerId, params, onValueChange) {
@@ -371,29 +556,30 @@ function setupColumnModel() {
   const resultEl = document.getElementById("column-model-result");
   if (!formContainer || !resultEl) return;
 
+  const modelPromise = loadLightGbmModel(getColumnModelUrl());
   let requestVersion = 0;
   const debouncedPredict = debounce(async (state, version) => {
-    const query = {
-      a: state.a,
-      d: state.d,
-      s: state.s,
-      fc: state.fc,
-      fyl: state.fyl,
-      fyt: state.fyt,
-      rhol: state.rhol,
-      rhot: state.rhot,
-      v: state.v,
-      lbd: state.lbd
-    };
-
     try {
-      const prediction = await predictFromApi("/predict/column", query);
+      const model = await modelPromise;
+      const features = [
+        state.a,
+        state.a / state.d,
+        state.fyt,
+        state.s / state.d,
+        state.fc,
+        state.v,
+        state.s / state.lbd,
+        state.a / state.s,
+        state.rhol * state.fyl,
+        state.rhot * state.fyt
+      ];
+      const prediction = predictLightGbm(model, features);
       if (version !== requestVersion) return;
       resultEl.textContent = `Estimated drift capacity: ${prediction.toFixed(2)} %.`;
     } catch (error) {
       if (version !== requestVersion) return;
-      const detail = error instanceof Error ? ` (${error.message})` : "";
-      resultEl.textContent = `Model API is unavailable. Start the Python API and try again${detail}.`;
+      const detail = error instanceof Error ? error.message : "Unable to load browser model.";
+      resultEl.textContent = `Model unavailable: ${detail}`;
     }
   }, 160);
 
@@ -425,28 +611,28 @@ function setupWallModel() {
   const resultEl = document.getElementById("wall-model-result");
   if (!formContainer || !resultEl) return;
 
+  const modelPromise = loadLightGbmModel(getWallModelUrl());
   let requestVersion = 0;
   const debouncedPredict = debounce(async (state, version) => {
-    const query = {
-      fc: state.fc,
-      Lw: state.Lw,
-      t: state.t,
-      h: state.h,
-      s: state.s,
-      rholb: state.rholb,
-      rhotb: state.rhotb,
-      Fy: state.Fy,
-      ALR: state.ALR
-    };
-
     try {
-      const prediction = await predictFromApi("/predict/wall", query);
+      const model = await modelPromise;
+      const features = [
+        state.h / state.Lw,
+        state.Lw / state.t,
+        state.fc,
+        state.t / state.h,
+        state.s / state.h,
+        state.rholb * state.Fy,
+        state.rhotb * state.Fy,
+        state.ALR
+      ];
+      const prediction = predictLightGbm(model, features);
       if (version !== requestVersion) return;
       resultEl.textContent = `Estimated drift capacity: ${prediction.toFixed(2)} %.`;
     } catch (error) {
       if (version !== requestVersion) return;
-      const detail = error instanceof Error ? ` (${error.message})` : "";
-      resultEl.textContent = `Model API is unavailable. Start the Python API and try again${detail}.`;
+      const detail = error instanceof Error ? error.message : "Unable to load browser model.";
+      resultEl.textContent = `Model unavailable: ${detail}`;
     }
   }, 160);
 

@@ -40,7 +40,8 @@
         This page allows users to apply a machine learning model developed for estimating the drift capacity of RC columns based on given structural and geometric properties. 	Existing data of cyclic tests of RC columns were used to train a Gradient-Boosted Decision Tree (GBDT) machine learning algorithm to estimate drift capacity. Drift 	capacity was defined as the drift measured at a 20% loss in lateral resistance. A total of 341 RC column tests from the ACI-369 database are used to train the ML 	algorithm. The database of columns used in this study can be found in the GitHub repository.   
       </p>
       <p>
-        The prediction shown on this page is served by the Python API using the exact Colab-trained model file.
+        The prediction shown on this page runs directly in the browser using the exported LightGBM model from
+        Colab (`model.txt`) with the same feature transformations as the notebook.
       </p>
 
       <p>
@@ -68,7 +69,7 @@
     </section>
   </main>
 
-  <script src="assets/js/model-api-config.js"></script>
+  <script src="assets/js/model-config.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 </html>
