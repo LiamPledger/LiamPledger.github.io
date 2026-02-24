@@ -7,10 +7,12 @@ This repository contains:
 
 End users visiting the website do **not** need Python installed. Only the deployed API host runs Python.
 
-Place the exact trained model files in:
+Model artifacts:
 
-- `api/models/column/pretrained_model.pkl`
-- `api/models/wall/pretrained_model.pkl`
+- API supports `pretrained_model.pkl` or `model.txt`.
+- The Render blueprint in `render.yaml` uses:
+  - `site/assets/models/column_model.txt`
+  - `site/assets/models/wall_model.txt`
 
 ## Run Locally
 
@@ -50,6 +52,26 @@ Then commit and push to GitHub.
 
 - GitHub Pages deploys `site/` via `.github/workflows/deploy-pages.yml`.
 - Deploy `api/` separately (Render, Railway, Fly.io, VM, etc.).
+
+## Deploy API on Render
+
+This repo includes `render.yaml` for one-click API deployment.
+
+1. Push this repo to GitHub.
+2. In Render, click `New +` -> `Blueprint`.
+3. Select this GitHub repo and deploy.
+4. When deployment finishes, open:
+   - `https://<your-render-service>.onrender.com/health`
+5. Confirm both models are loaded:
+   - `"column_model_loaded": true`
+   - `"wall_model_loaded": true`
+6. Set the website API URL in `site/assets/js/model-api-config.js`:
+
+```javascript
+window.MODEL_API_BASE = "https://<your-render-service>.onrender.com";
+```
+
+7. Commit and push that file so GitHub Pages uses the live API.
 
 ## Push Changes
 

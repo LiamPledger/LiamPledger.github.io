@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: liam-pledger-model-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r api/requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT --app-dir api
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: COLUMN_MODEL_PATHS
+        value: site/assets/models/column_model.txt
+      - key: WALL_MODEL_PATHS
+        value: site/assets/models/wall_model.txt
