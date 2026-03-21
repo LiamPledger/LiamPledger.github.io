@@ -468,15 +468,30 @@ i {
 
 .apa-reference-list {
   list-style: none;
-  margin: 0.65rem -1cm 0;
-  padding-left: 0;
-  padding-right: 0;
+  counter-reset: ref-item;
+  margin: 0.8rem -1cm 0;
+  padding: 0;
 }
 
 .apa-reference-list li {
-  margin: 0 0 0.55rem;
-  padding-left: 1.2cm;
-  text-indent: -1.2cm;
+  counter-increment: ref-item;
+  position: relative;
+  display: block;
+  margin: 0 0 0.8rem;
+  padding-left: 2.2rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.apa-reference-list li::before {
+  content: counter(ref-item) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.8rem;
+  text-align: right;
+  color: #2a3f4c;
+  font-weight: 700;
 }
 
 .resource-spacer {
@@ -527,12 +542,12 @@ i {
   }
 
   .apa-reference-list {
-    margin: 0.65rem 0 0;
+    margin: 0.7rem 0 0;
   }
 
   .apa-reference-list li {
-    padding-left: 0.8cm;
-    text-indent: -0.8cm;
+    margin: 0 0 0.7rem;
+    padding-left: 2rem;
   }
 
 }
