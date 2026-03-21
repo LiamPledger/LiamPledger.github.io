@@ -162,6 +162,22 @@ i {
   border-radius: 999px;
 }
 
+.download-btn {
+  display: inline-block;
+  margin-top: 0.45rem;
+  background: #0a5663;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 0.65rem;
+  border: 1px solid #08454f;
+  padding: 0.7rem 1rem;
+}
+
+.download-btn:hover {
+  background: #0c6776;
+}
+
 .side-nav {
   margin-top: 1rem;
   display: grid;
@@ -452,6 +468,12 @@ i {
 
 .resource-spacer {
   margin-top: 0.9rem;
+}
+
+.note-small {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: #4a6070;
 }
 
 @media (max-width: 960px) {
