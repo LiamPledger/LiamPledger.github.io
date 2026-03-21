@@ -466,6 +466,19 @@ i {
   margin: 0.3rem 0;
 }
 
+.apa-reference-list {
+  list-style: none;
+  margin: 0.65rem -1cm 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.apa-reference-list li {
+  margin: 0 0 0.55rem;
+  padding-left: 1.2cm;
+  text-indent: -1.2cm;
+}
+
 .resource-spacer {
   margin-top: 0.9rem;
 }
@@ -511,6 +524,15 @@ i {
 
   .explore .card-grid {
     grid-template-columns: 1fr;
+  }
+
+  .apa-reference-list {
+    margin: 0.65rem 0 0;
+  }
+
+  .apa-reference-list li {
+    padding-left: 0.8cm;
+    text-indent: -0.8cm;
   }
 
 }
