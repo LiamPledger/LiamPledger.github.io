@@ -469,7 +469,7 @@ i {
 .apa-reference-list {
   list-style: none;
   counter-reset: ref-item;
-  margin: 0.8rem -1cm 0;
+  margin: 0.0rem 0.2cm 0;
   padding: 0;
 }
 
@@ -477,18 +477,19 @@ i {
   counter-increment: ref-item;
   position: relative;
   display: block;
-  margin: 0 0 0.8rem;
-  padding-left: 2.2rem;
+  margin: 0 0 0.9rem;
+  padding-left: 2.5rem;
   line-height: 1.55;
   overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .apa-reference-list li::before {
-  content: counter(ref-item) ".";
+  content: "[" counter(ref-item) "]";
   position: absolute;
   left: 0;
   top: 0;
-  width: 1.8rem;
+  width: 1.9rem;
   text-align: right;
   color: #2a3f4c;
   font-weight: 700;
@@ -542,7 +543,7 @@ i {
   }
 
   .apa-reference-list {
-    margin: 0.7rem 0 0;
+    margin: 0.7rem 0.35rem 0;
   }
 
   .apa-reference-list li {
